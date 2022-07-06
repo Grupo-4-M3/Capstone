@@ -14,12 +14,18 @@ export const StyledHeader = styled.header`
     padding: 0 3rem;
 
     & h1 {
-        font-family: "Montserrat", inter;
         width: 3rem;
         color: #54BAB9;
-
     }
     & h1 span{
-        color: #448382 ;
+        color: #448382;
+    }
+    & div{
+        display: flex;
+        justify-content: flex-end;
+        gap: .8rem;
+    }
+    & h2{
+        color: #448382;
     }
 `
