@@ -60,5 +60,9 @@ export const StyledForm = styled.div`
         color: #474747;
       }
     }
+
+    button {
+      margin-bottom: 20px;
+    }
   }
 `;
