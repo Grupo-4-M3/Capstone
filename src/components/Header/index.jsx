@@ -69,10 +69,9 @@ export function Header({children,user,type}){
                 </StyledHeader>
              )
         default:
-            <StyledHeader> 
+           return( <StyledHeader> 
                 <h1 onClick={levarAoDashboard}>Call<span>Mind</span></h1>
                 <div>{children}</div>
-            </StyledHeader>
-        break;
+            </StyledHeader>)
     }
 }
