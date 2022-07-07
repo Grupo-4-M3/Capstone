@@ -10,7 +10,9 @@ function FormComponent({ onSubmitFunction, children, title }) {
           return child.type === "label" ? (
             <div key={index}>
               {child}
-              {array[index + 2].type === "label" ? (
+              {array[index + 2]?.type === "label" ||
+              array[index + 2]?.type?.target === "button" ||
+              !array[index + 2] ? (
                 array[index + 1]
               ) : (
                 <div className="hour">
