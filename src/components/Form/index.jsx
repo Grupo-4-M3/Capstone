@@ -7,11 +7,19 @@ function FormComponent({ onSubmitFunction, children, title }) {
 
       <form action="" onSubmit={onSubmitFunction}>
         {children.map((child, index, array) => {
-          return index % 2 === 0 ? (
+          return child.type === "label" ? (
             <div key={index}>
               {child}
-              {array[index + 1]}
+              {array[index + 2].type === "label" ? (
+                array[index + 1]
+              ) : (
+                <div className="hour">
+                  {[array[index + 1], array[index + 2]]}
+                </div>
+              )}
             </div>
+          ) : child.type.target === "button" ? (
+            child
           ) : (
             <div className="ignore" key={index}></div>
           );
