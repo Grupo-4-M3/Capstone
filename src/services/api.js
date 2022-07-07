@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export const API = axios.create({
-  baseURL: "<base_url>",
+  baseURL: "https://api-callmind.herokuapp.com",
   timeout: 5000,
 });
