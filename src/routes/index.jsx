@@ -39,7 +39,7 @@ function Routes() {
       <Route path="/psicologo/:id" exact>
         <ListarPsicologo />
       </Route>
-      <Route path="/" exact></Route>
+      <Route path="/"></Route>
     </Switch>
   );
 }
