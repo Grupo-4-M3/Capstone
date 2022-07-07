@@ -55,7 +55,7 @@ export function Header({children,user,type}){
             )
         case "dashBoard":
             
-                return(
+             return(
                 <StyledHeader dash>
                     <h1 onClick={levarAoDashboard}>Call<span>Mind</span></h1>
                     <div>

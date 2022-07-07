@@ -15,7 +15,7 @@ export const StyledForm = styled.div`
 
   h2 {
     color: #448382;
-    font-size: 36px;
+    font-size: 4vh;
     margin-bottom: 25px;
   }
 
@@ -23,7 +23,7 @@ export const StyledForm = styled.div`
     display: flex;
     width: 100%;
     flex-direction: column;
-    gap: 30px;
+    gap: 3vh;
 
     div {
       width: 100%;
@@ -42,12 +42,14 @@ export const StyledForm = styled.div`
       padding-left: 5px;
     }
 
-    input {
-      height: 50px;
-      border-radius: 20px;
+    input,
+    select {
+      height: ${({ inputSize }) => inputSize || "6vh"};
+      max-height: 50px;
+      border-radius: 13px;
       border: none;
       background-color: #e0e0e0;
-      padding: 15px;
+      padding: 1vh;
       box-sizing: border-box;
       border: 1px solid #afafaf;
 
@@ -58,6 +60,19 @@ export const StyledForm = styled.div`
       &:focus {
         outline: 1px solid #222222;
         color: #474747;
+      }
+    }
+
+    select:focus {
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+
+    .hour {
+      display: flex;
+      flex-direction: row;
+      input {
+        width: 50%;
       }
     }
 

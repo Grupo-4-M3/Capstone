@@ -1,27 +1,26 @@
 import styled from "styled-components";
 
 export const ButtonCM = styled.button`
+  text-align: center;
 
-text-align: center;
+  cursor: pointer;
 
-cursor: pointer;
+  font-weight: 600;
+  font-size: ${({nameSize})=> nameSize};
 
-    font-weight: 600;
+  border-radius: 13px;
+  border-style: none;
+  color: #ffffff;
+  background-color: ${({ backcolor }) => backcolor};
 
-    border-radius: 5px;
-    border-style: none;
-    color: #FFFFFF;
-    background-color: ${({backcolor})=> backcolor};
-    
-    height: ${({sizeY})=> sizeY};
-    width: ${({size})=> size};
+  height: ${({ sizeY }) => sizeY};
+  width: ${({ size }) => size};
 
-    &:hover{
-        background-color: #448382;
-    }
-   
-    &:active{
-        opacity: .8;
-    }
+  &:hover {
+    background-color: #448382;
+  }
 
+  &:active {
+    opacity: 0.8;
+  }
 `;
