@@ -11,7 +11,7 @@ function FormComponent({ onSubmitFunction, children, title }) {
             <div key={index}>
               {child}
               {array[index + 2]?.type === "label" ||
-              array[index + 2]?.type?.target === "button" ||
+              array[index + 2]?.type?.name === "Button" ||
               !array[index + 2] ? (
                 array[index + 1]
               ) : (
@@ -20,7 +20,7 @@ function FormComponent({ onSubmitFunction, children, title }) {
                 </div>
               )}
             </div>
-          ) : child.type.target === "button" ? (
+          ) : child.type?.name === "Button" ? (
             child
           ) : (
             <div className="ignore" key={index}></div>
