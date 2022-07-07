@@ -1,7 +1,41 @@
-import Page from "../../components/Page";
+import { Header } from "../../components/Header";
+import Imagem from "../../imagem.png";
+import { StyledHome } from "./style";
+import { Rodape } from "./style";
 
 function Home() {
-  return <Page type={"home"} />;
+  return (
+    <StyledHome>
+      <div className="Imagem">
+        <header>
+          <Header type={"home"} />
+        </header>
+        <div className="title">
+          <h2>Una-se a nós</h2>
+        </div>
+        <img src={Imagem} />
+      </div>
+      <Rodape>
+        <span>
+          <strong>P.O:</strong>
+          Alex Flavio
+        </span>
+        <span>
+          <strong>Scrum Master:</strong>
+          Susimara Roberti
+        </span>
+        <span>
+          <strong>Tech Lider:</strong>
+          Renan
+        </span>
+
+        <span>
+          <strong>Q.A. :</strong>
+          Abner Leal, Rodolfo Jaques
+        </span>
+      </Rodape>
+    </StyledHome>
+  );
 }
 
 export default Home;
