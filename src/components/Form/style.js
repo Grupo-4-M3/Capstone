@@ -42,7 +42,8 @@ export const StyledForm = styled.div`
       padding-left: 5px;
     }
 
-    input {
+    input,
+    select {
       height: 50px;
       border-radius: 20px;
       border: none;
@@ -58,6 +59,19 @@ export const StyledForm = styled.div`
       &:focus {
         outline: 1px solid #222222;
         color: #474747;
+      }
+    }
+
+    select:focus {
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+
+    .hour {
+      display: flex;
+      flex-direction: row;
+      input {
+        width: 50%;
       }
     }
 
