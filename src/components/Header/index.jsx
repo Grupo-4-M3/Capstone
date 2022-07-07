@@ -14,10 +14,10 @@ export function Header({children,user,type}){
         historico.push("./home")
     }
     const levarAoLogin = ()=>{
-        historico.push()
+        historico.push("./login")
     }
     const levarAoRegistro = ()=>{
-        historico.push()
+        historico.push("./registro")
     }
     
     switch (type) {
@@ -55,7 +55,7 @@ export function Header({children,user,type}){
             )
         case "dashBoard":
             
-             return(
+                return(
                 <StyledHeader dash>
                     <h1 onClick={levarAoDashboard}>Call<span>Mind</span></h1>
                     <div>
@@ -70,10 +70,9 @@ export function Header({children,user,type}){
                 </StyledHeader>
              )
         default:
-            <StyledHeader> 
+           return( <StyledHeader> 
                 <h1 onClick={levarAoDashboard}>Call<span>Mind</span></h1>
                 <div>{children}</div>
-            </StyledHeader>
-        break;
+            </StyledHeader>)
     }
 }

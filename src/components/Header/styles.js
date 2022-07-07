@@ -16,7 +16,6 @@ export const StyledHeader = styled.header`
     padding: 0 .5rem;
 
     & h1 {
-        font-family: "Montserrat", inter;
         width: 3rem;
         color: #54BAB9;
 
