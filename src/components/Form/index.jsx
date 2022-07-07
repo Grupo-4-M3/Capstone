@@ -1,8 +1,8 @@
 import { StyledForm } from "./style";
 
-function FormComponent({ onSubmitFunction, children, title }) {
+function FormComponent({ onSubmitFunction, children, title, inputSize }) {
   return (
-    <StyledForm>
+    <StyledForm inputSize={inputSize}>
       <h2>{title}</h2>
 
       <form action="" onSubmit={onSubmitFunction}>
