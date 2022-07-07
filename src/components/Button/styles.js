@@ -6,8 +6,9 @@ export const ButtonCM = styled.button`
   cursor: pointer;
 
   font-weight: 600;
+  font-size: ${({nameSize})=> nameSize};
 
-  border-radius: 8px;
+  border-radius: 13px;
   border-style: none;
   color: #ffffff;
   background-color: ${({ backcolor }) => backcolor};
