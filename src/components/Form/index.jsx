@@ -1,8 +1,8 @@
 import { StyledForm } from "./style";
 
-function FormComponent({ onSubmitFunction, children, title }) {
+function FormComponent({ onSubmitFunction, children, title, inputSize }) {
   return (
-    <StyledForm>
+    <StyledForm inputSize={inputSize}>
       <h2>{title}</h2>
 
       <form action="" onSubmit={onSubmitFunction}>
@@ -10,7 +10,9 @@ function FormComponent({ onSubmitFunction, children, title }) {
           return child.type === "label" ? (
             <div key={index}>
               {child}
-              {array[index + 2].type === "label" ? (
+              {array[index + 2]?.type === "label" ||
+              array[index + 2]?.type?.name === "Button" ||
+              !array[index + 2] ? (
                 array[index + 1]
               ) : (
                 <div className="hour">
@@ -18,7 +20,7 @@ function FormComponent({ onSubmitFunction, children, title }) {
                 </div>
               )}
             </div>
-          ) : child.type.target === "button" ? (
+          ) : child.type?.name === "Button" ? (
             child
           ) : (
             <div className="ignore" key={index}></div>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ItemList = styled.li`
 
-border-radius: 8px;
+border-radius: 13px;
 background-color: #E9DAC1;
 
 min-height: 2.5rem;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SectionList = styled.section`
-border-radius: 8px;
+border-radius: 13px;
 box-shadow: 0 0 .2rem 0;
 
 width: ${({size})=> size};
