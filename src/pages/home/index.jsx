@@ -17,18 +17,17 @@ function Home() {
       </div>
       <Rodape>
         <span>
-          <strong>P.O:</strong>
+          <strong>P.O. :</strong>
           Alex Flavio
         </span>
         <span>
-          <strong>Scrum Master:</strong>
+          <strong>Scrum Master :</strong>
           Susimara Roberti
         </span>
         <span>
-          <strong>Tech Lider:</strong>
+          <strong>Tech Leader :</strong>
           Renan
         </span>
-
         <span>
           <strong>Q.A. :</strong>
           Abner Leal, Rodolfo Jaques
