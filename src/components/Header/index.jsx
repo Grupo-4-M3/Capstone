@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { StyledHeader } from "./styles";
 import { Button } from "./../Button";
 
 export function Header({ children, user, type, heigth }) {
+
   const historico = useHistory();
 
   const levarAoDashboard = () => {

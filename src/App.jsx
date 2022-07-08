@@ -1,4 +1,6 @@
 import "./App.css";
+
+import Home from "./pages/home";
 import Routes from "./routes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
