@@ -64,6 +64,7 @@ export const StyledSection = styled.section`
     padding: 10px;
     width: calc(100% - 36px);
     background-color: #e9dac1;
+    border-radius: 8px;
   }
 
   .more-info {
@@ -74,6 +75,23 @@ export const StyledSection = styled.section`
     padding: 0px;
     border-bottom-left-radius: 13px;
     border-bottom-right-radius: 13px;
+    div {
+      border-top-left-radius: 13px;
+      border-top-right-radius: 13px;
+      padding: 0px;
+      ul {
+        padding: 10px;
+      }
+    }
+
+    h3 {
+      width: 100%;
+      background-color: #54bab9;
+      color: white;
+      padding: 6px;
+      border-top-left-radius: 13px;
+      border-top-right-radius: 13px;
+    }
   }
   details {
     padding-bottom: 0.5rem;
