@@ -3,7 +3,8 @@ import { useHistory } from "react-router-dom";
 import { StyledHeader } from "./styles";
 import { Button } from "./../Button";
 
-export function Header({ children, user, type }) {
+export function Header({ children, user, type, heigth }) {
+
   const historico = useHistory();
 
   const levarAoDashboard = () => {
@@ -14,7 +15,7 @@ export function Header({ children, user, type }) {
     historico.push("./home");
   };
   const levarAoLogin = () => {
-    historico.push();
+    historico.push("./login");
   };
   const levarAoRegistro = () => {
     historico.push();
@@ -49,7 +50,7 @@ export function Header({ children, user, type }) {
       );
     case "registro":
       return (
-        <StyledHeader>
+        <StyledHeader heigth={heigth}>
           <h1 onClick={levarAoHome}>
             Call<span>Mind</span>
           </h1>
