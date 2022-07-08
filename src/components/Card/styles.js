@@ -4,6 +4,7 @@ export const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 13px;
 
   * {
     box-sizing: border-box;
@@ -31,6 +32,8 @@ export const StyledSection = styled.section`
     background-color: #fbf8f1;
     width: 100%;
     margin: 0px;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
 
     figure {
       background-color: inherit;
@@ -69,6 +72,8 @@ export const StyledSection = styled.section`
     margin: 0px;
     width: 100%;
     padding: 0px;
+    border-bottom-left-radius: 13px;
+    border-bottom-right-radius: 13px;
   }
   details {
     padding-bottom: 0.5rem;
