@@ -1,5 +1,5 @@
 import { Header } from "../../components/Header";
-import Imagem from "../../imagem.png";
+import Imagem from "../../assets/imagem.png";
 import { StyledHome } from "./style";
 import { Rodape } from "./style";
 
@@ -13,7 +13,7 @@ function Home() {
         <div className="title">
           <h2>Una-se a nós</h2>
         </div>
-        <img src={Imagem} />
+        <img src={Imagem} alt="" />
       </div>
       <Rodape>
         <span>
