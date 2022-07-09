@@ -8,7 +8,7 @@ function Home() {
     <StyledHome>
       <div className="Imagem">
         <header>
-          <Header type={"home"} />
+          <Header type="home" />
         </header>
         <div className="title">
           <h2>Una-se a nós</h2>
@@ -17,19 +17,19 @@ function Home() {
       </div>
       <Rodape>
         <span>
-          <strong>P.O. :</strong>
+          <strong>P.O.: </strong>
           Alex Flavio
         </span>
         <span>
-          <strong>Scrum Master :</strong>
+          <strong>Scrum Master: </strong>
           Susimara Roberti
         </span>
         <span>
-          <strong>Tech Leader :</strong>
-          Renan
+          <strong>Tech Leader: </strong>
+          Renan Martini
         </span>
         <span>
-          <strong>Q.A. :</strong>
+          <strong>Q.A.: </strong>
           Abner Leal, Rodolfo Jaques
         </span>
       </Rodape>

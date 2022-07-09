@@ -17,9 +17,11 @@ export const StyledHeader = styled.header`
     font-family: "Montserrat", inter;
     width: 3rem;
     color: #54bab9;
+    cursor: pointer;
   }
   & h1 span {
     color: #448382;
+    cursor: pointer;
   }
   & div {
     display: flex;

@@ -1,5 +1,5 @@
 function DashboardPsicologo() {
-  return <main></main>;
+  return <main>DashboardPsicologo</main>;
 }
 
 export default DashboardPsicologo;
