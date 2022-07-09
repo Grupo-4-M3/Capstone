@@ -6,6 +6,8 @@ export const StyledSection = styled.section`
   align-items: center;
   border-radius: 13px;
 
+  box-shadow: 0 0 .2rem 0;
+
   * {
     box-sizing: border-box;
   }
