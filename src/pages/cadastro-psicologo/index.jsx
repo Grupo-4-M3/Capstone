@@ -1,5 +1,5 @@
 function CadastroPsicologo() {
-  return <main></main>;
+  return <main>CadastroPsicologo</main>;
 }
 
 export default CadastroPsicologo;

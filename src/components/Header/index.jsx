@@ -1,10 +1,8 @@
-import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { StyledHeader } from "./styles";
 import { Button } from "./../Button";
 
 export function Header({ children, user, type, heigth }) {
-
   const historico = useHistory();
 
   const levarAoDashboard = () => {
@@ -18,7 +16,7 @@ export function Header({ children, user, type, heigth }) {
     historico.push("./login");
   };
   const levarAoRegistro = () => {
-    historico.push();
+    historico.push("./registro");
   };
 
   switch (type) {
@@ -31,9 +29,7 @@ export function Header({ children, user, type, heigth }) {
           <div>
             <Button onclick={levarAoLogin} nameButton={"Login"}></Button>
 
-            <Button onclick={levarAoRegistro} nameButton={"Registro"}>
-              Registro
-            </Button>
+            <Button onclick={levarAoRegistro} nameButton={"Registro"}></Button>
           </div>
         </StyledHeader>
       );

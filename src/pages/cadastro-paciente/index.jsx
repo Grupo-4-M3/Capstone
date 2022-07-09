@@ -1,5 +1,5 @@
 function CadastroPaciente() {
-  return <main></main>;
+  return <main>Cadastro Paciente</main>;
 }
 
 export default CadastroPaciente;

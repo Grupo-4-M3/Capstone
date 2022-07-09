@@ -65,7 +65,6 @@ function Registro() {
 
     API.post("/register", user)
       .then((_) => {
-        setTimeout(4000);
         toast.success("Cadastrado com sucesso!");
         return history.push("/login");
       })
