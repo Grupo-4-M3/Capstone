@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createContext } from "react";
-import { API } from "../../services/api";
+import API from "../../services/api";
 import { toast } from "react-toastify";
 
 export const UserContext = createContext();
@@ -41,7 +41,6 @@ function UserProvider({ children }) {
   };
 
   const deslogar = (redirecionador) => {
-    console.log("chamou");
     localStorage.removeItem("user");
     setUsuario(null);
     return redirecionador("/home");

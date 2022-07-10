@@ -1,6 +1,6 @@
 import { Button } from "../../components/Button";
 import FormComponent from "../../components/Form";
-import { API } from "../../services/api";
+import API from "../../services/api";
 import { Box, Container, Errors } from "./styles";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -52,8 +52,6 @@ function Registro() {
   const history = useHistory();
 
   const cadastrar = ({ name, email, password, type, registration = "" }) => {
-    console.log("chamou a função");
-
     const user = {
       name,
       email,
