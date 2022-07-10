@@ -18,11 +18,13 @@ function Login() {
     password: yup
       .string()
       .required("Informe uma senha")
+      .min(8, "Senha deve conter ao menos 8 caracteres")
+      .matches(/.*\d/, "Senha Deve conter ao menos um dígito")
+      .matches(/.*[a-z]/, "Senha Deve conter ao menos uma letra minúscula")
+      .matches(/.*[A-Z]/, "Senha Deve conter ao menos uma letra maiúscula")
       .matches(
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-        "A senha precisa ter no mínimo 8 caracteres, " +
-          "uma letra maiúscula e uma letra minúscula, " +
-          "um número e um caracter especial"
+        /.*[$*&@#!]/,
+        "Senha Deve conter ao menos um caractere especial"
       ),
   });
 
