@@ -14,10 +14,10 @@ export function Header({ children, user, type }) {
     historico.push("./home");
   };
   const levarAoLogin = () => {
-    historico.push();
+    historico.push("/login");
   };
   const levarAoRegistro = () => {
-    historico.push();
+    historico.push("/registro");
   };
 
   switch (type) {
