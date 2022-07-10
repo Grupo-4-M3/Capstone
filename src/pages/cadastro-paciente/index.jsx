@@ -159,7 +159,7 @@ function CadastroPaciente() {
             <option value="ensino-fundamental-inconpleto">
               Ensino Fundamental Incompleto
             </option>
-            <option value="ensin-fundamental-completo">
+            <option value="ensino-fundamental-completo">
               Ensino Fundamental Completo
             </option>
             <option value="ensino-medio-incompleto">
