@@ -6,25 +6,29 @@ import { useParams } from "react-router-dom";
 import Card from "../../components/Card";
 import { Header } from "../../components/Header";
 import { SecMain } from "./styles";
-import { API } from "../../services/api";
+import  API  from "../../services/api";
+import { UserContext } from "../../providers/user";
+import axios from "axios";
 
 function ListarPsicologo() {
 
+  const {usuario} = useContext(UserContext)
+
   const [pessoa,setPessoa] = useState({})
-  const [usuario,setUsuario] = useState({})
+  const [paciente,setPaciente] = useState({})
 
   const params = useParams()
 
   const { id } = params 
 
-  const usuarioProvider = ''
-  const tokem = ''
+  const {accessToken} = usuario
+  console.log(usuario);
 
   useEffect(()=>{
     
-    API.get(`/psychologists?userId=${id}`,{
+    axios.get(`https://api-callmind.herokuapp.com/psychologists?userId=${id}`,{
       headers: {
-          'Authorization': `Bearer ${tokem}`
+          'Authorization': `Bearer ${accessToken}`
       }
     })
     .then((resp)=> setPessoa(resp.data[0]))
@@ -33,17 +37,13 @@ function ListarPsicologo() {
 
   useEffect(()=>{
     
-    API.get(`/patients?userId=${usuarioProvider.userId}`,{
-      headers: {
-          'Authorization': `Bearer ${tokem}`
-      }
-    })
-    .then((resp)=> console.log(resp.data[0]))//setUsuario(resp.data[0]))
+    API.get(`/patients?userId=${usuario.id}`)
+    .then((resp)=> setPaciente(resp.data[0]))
     .catch((err)=> console.log(err))
   },[])
 
   return <SecMain>
-    <Header type={"dashBoard"} user={usuario}/>
+    <Header type={"dashBoard"} user={paciente}/>
     <div className="alinhamento">
       <section className="container">
         <Card 
