@@ -165,4 +165,8 @@ export const StyledSection = styled.section`
       }
     }
   }
+<<<<<<< HEAD
 `;
+=======
+`;
+>>>>>>> origin/fix_Header
