@@ -80,7 +80,8 @@ export function Header({ children, user, type, heigth }) {
               />
             </figure>
             <div>
-              <h2>{!!user ? `${user.name.split(" ")[0]}` : "User1"}</h2>
+              <h2>{!!user ? `${user?.name?.split(" ")[0]}` : "User1"}</h2>
+
               <Button nameButton={"Logout"}></Button>
             </div>
           </div>
