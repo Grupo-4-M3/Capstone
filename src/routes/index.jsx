@@ -1,4 +1,5 @@
 import { Route, Switch } from "react-router-dom";
+import { Header } from "../components/Header";
 import CadastroPaciente from "../pages/cadastro-paciente";
 import CadastroPsicologo from "../pages/cadastro-psicologo";
 import DashboardPaciente from "../pages/dashboard-paciente";

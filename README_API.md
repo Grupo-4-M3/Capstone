@@ -169,7 +169,7 @@ Este é o backend da aplicação API CallMind -> Seu objetivo é fornecer alguma
 
 <p>Para listar um paciente cadastrado é necessário utilizar o endpoint abaixo:</p>
 <p>Método: GET BASE_URL /patients (todos)</p>
-<p>(Método: GET BASE_URL /patients/id (paciente específico))</p><br/>
+<p>(Método: GET BASE_URL /patients?userId=(número do ID) (paciente específico)</p><br/>
 
 <p>Formato da requisição</p>
 <span>Não é necessário um corpo de requisição (apenas o token em Authorization)</span><br/><br/>
@@ -231,6 +231,7 @@ Este é o backend da aplicação API CallMind -> Seu objetivo é fornecer alguma
 		"psychologist": "Rogerio Alves Cardoso"
 		}
 	],
+	"calendar": [],
 	"id": 1
 }</span><br/><br/>
 <p>Formato de Erro - Status 404:  { }</p><br/><br/>

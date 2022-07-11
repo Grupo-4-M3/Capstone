@@ -1,5 +1,5 @@
 function DashboardPaciente() {
-  return <main></main>;
+  return <main>DashboardPaciente</main>;
 }
 
 export default DashboardPaciente;
