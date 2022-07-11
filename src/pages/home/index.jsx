@@ -30,7 +30,11 @@ function Home() {
         </span>
         <span>
           <strong>Q.A. :</strong>
-          Abner Leal, Rodolfo Jaques
+          Rodolfo Jaques
+        </span>
+        <span>
+          <strong>Q.A. :</strong>
+          Rodolfo Jaques
         </span>
       </Rodape>
     </StyledHome>

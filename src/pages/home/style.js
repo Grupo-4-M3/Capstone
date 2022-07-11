@@ -37,7 +37,8 @@ export const StyledHome = styled.div`
   }
 `;
 export const Rodape = styled.div`
-  height: 45px;
+  min-height: 45px;
+  max-height: 80px;
   background: #54bab9;
   color: #fff;
   position: fixed;
@@ -48,6 +49,7 @@ export const Rodape = styled.div`
   font-size: clamp(8px, 6px + 2vw, 16px);
   justify-content: space-evenly;
   flex-wrap: wrap;
+  gap: 5px;
   align-items: center;
   span {
     display: inline-block;
