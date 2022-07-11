@@ -31,6 +31,7 @@ background-color: #F7ECDE;
 
         display: flex;
         flex-direction: column;
+        gap: .7rem;
 
     }
 `;

@@ -6,7 +6,7 @@ background-color:  #FBF8F1;
 
 
 width: 100%;
-height: 100vh;
+min-height: 100vh;
 
 display: flex;
 flex-direction: column;
@@ -19,7 +19,6 @@ gap: 1.5rem;
 
 
         width: 100%;
-        height: 100vw;
 
         display: flex;
         flex-direction: column;
@@ -40,9 +39,10 @@ gap: 1.5rem;
         background-color: #FBF8F1;
 
         width: 90%;
+        max-width: 350px;
         border-radius: 13px;
         box-shadow: 0 0 .2rem 0;
-        padding-bottom: 1rem;       
+        padding-bottom: 1rem;
 
         header{
             background-color: #54BAB9;
@@ -72,7 +72,6 @@ gap: 1.5rem;
             align-items: flex-start;
 
             padding-top: 3.5rem;
-            height: 80vh;
         }
         
         .container{
@@ -83,7 +82,7 @@ gap: 1.5rem;
 
         .agenda{
             width: 35%;
-            max-width: 390px;
+            max-width: 350px;
         }
     }
 `;
