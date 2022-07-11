@@ -31,15 +31,9 @@ export const StyledHeader = styled.header`
     gap: 0.1rem;
   }
   & figure {
-<<<<<<< HEAD
-    background-color: red;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-=======
-    display:flex;
+    display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     overflow: hidden;
     width: 3rem;
     height: 3rem;
@@ -48,8 +42,7 @@ export const StyledHeader = styled.header`
   }
   & figure img {
     width: 3rem;
-    height: 3rem
->>>>>>> origin/fix_Header
+    height: 3rem;
   }
   ${(props) =>
     props.dash &&
@@ -59,10 +52,7 @@ export const StyledHeader = styled.header`
         gap: 0.5rem;
       }
       & div div {
-<<<<<<< HEAD
-=======
         color: #448382;
->>>>>>> origin/fix_Header
         flex-direction: column;
         gap: 0.08rem;
       }
