@@ -88,7 +88,7 @@ function Card({ pessoa, sizeX, maxSizeX, maxSizeY, sizeY, type }) {
         {type === "paciente" ? (
           <div>
             <h3>Histórico de atendimentos</h3>
-            {pessoa?.medical_records ? (
+            {pessoa?.medical_records?.length > 0 ? (
               <ul>
                 {pessoa?.medical_records?.map((consulta, index) => (
                   <li key={index}>
