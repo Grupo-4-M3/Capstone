@@ -12,19 +12,20 @@ import { UserContext } from "../../providers/user";
 function ListarPsicologo() {
   const { usuario } = useContext(UserContext);
 
-  const history = useHistory()
-  
-  useEffect(()=>{
-    usuario?.accessToken
-    ?
-      usuario.type !== "paciente"
-      ?
-      history.push("/dashboard-psicologo")
-      :
-      <></>
-    :
-    history.push("/")
-  },[])
+  const history = useHistory();
+
+  useEffect(() => {
+    usuario?.accessToken ? (
+      usuario.type !== "paciente" ? (
+        history.push("/dashboard-psicologo")
+      ) : (
+        <></>
+      )
+    ) : (
+      history.push("/")
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [pessoa, setPessoa] = useState({});
   const [paciente, setPaciente] = useState({});
@@ -36,8 +37,7 @@ function ListarPsicologo() {
   const { id } = params;
 
   useEffect(() => {
-
-      API.get(`/psychologists?userId=${id}`)
+    API.get(`/psychologists?userId=${id}`)
       .then((resp) => setPessoa(resp.data[0]))
       .catch((err) => console.log(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
