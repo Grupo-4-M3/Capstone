@@ -7,13 +7,16 @@ export const SectionList = styled.section`
   min-height: ${({ sizeY }) => sizeY};
   max-height: ${({ maxSize }) => maxSize};
   background-color: #F7ECDE;
+
   max-width: ${({maxSizeWidth})=> maxSizeWidth};
   display: flex;
   flex-direction: column;
   gap: .7rem;
   overflow: auto;
+
   header {
     border-radius: 8px 8px 0 0;
+
         background-color: #54BAB9;
         height: 40px;
         display: flex;
