@@ -9,6 +9,7 @@ import { SecMain } from "./styles";
 import API from "../../services/api";
 import { UserContext } from "../../providers/user";
 import axios from "axios";
+import { ModalHorario } from "../../components/ModalHorario";
 
 function ListarPsicologo() {
   const { usuario } = useContext(UserContext);
@@ -16,12 +17,34 @@ function ListarPsicologo() {
   const [pessoa, setPessoa] = useState({});
   const [paciente, setPaciente] = useState({});
 
+
+
+  const [data,setData] = useState(new Date());
+  const [horarios,setHorarios] = useState([]);
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const params = useParams();
 
   const { id } = params;
 
   const { accessToken } = usuario;
   console.log(usuario);
+
+
+  const callBack = (event,horario)=>{
+    console.log(horario)
+    return horario
+  };
+
+  const callBackCalendar = (event)=>{
+      setData(event)
+      handleOpen()
+  }
+
+
 
   useEffect(() => {
     axios
@@ -42,8 +65,24 @@ function ListarPsicologo() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(()=> {
+    const { calendar } = pessoa;
+    const arrayApoio = [];
+    const chaveDia = `dia${data.getTime()}`;
+    if(calendar){
+
+      if(chaveDia in calendar){
+        for(let chave in calendar[chaveDia]){
+          arrayApoio.push(calendar[chaveDia][chave])
+        }
+      }
+      setHorarios(arrayApoio)
+    }
+  },[,data])
+
   return (
     <SecMain>
+
       <Header type={"dashBoard"} user={paciente} />
       <section className="alinhamento">
         <article className="container">
@@ -54,10 +93,11 @@ function ListarPsicologo() {
             <h3>Agenda</h3>
           </header>
           <div className="calendario">
-            <Calendar />
+            <Calendar onChange={callBackCalendar} value={data} />
           </div>
         </article>
       </section>
+      <ModalHorario open={open} handleClose={handleClose} horarios={horarios} callBack={callBack}/>
     </SecMain>
   );
 }

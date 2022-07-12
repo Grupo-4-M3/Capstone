@@ -59,7 +59,7 @@ function CadastroPsicologo() {
       schedules,
       working_days,
       patients: [],
-      calendar: [],
+      calendar: {},
     };
 
     API.post("/psychologists", psicologo)

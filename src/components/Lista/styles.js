@@ -5,6 +5,7 @@ border-radius: 13px;
 box-shadow: 0 0 .2rem 0;
 
 width: ${({size})=> size};
+max-width: ${({maxSizeWidth})=> maxSizeWidth};
 min-height: ${({sizeY})=> sizeY};
 max-height: ${({maxSize})=> maxSize};
 background-color: #F7ECDE;
@@ -32,6 +33,7 @@ background-color: #F7ECDE;
         display: flex;
         flex-direction: column;
         gap: .7rem;
+        overflow: auto;
 
     }
 `;
