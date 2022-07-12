@@ -33,7 +33,6 @@ function ListarPsicologo() {
   const { id } = params;
 
   const { accessToken } = usuario;
-  console.log(usuario);
 
   const callBack = (event, horario) => {
     handleClose();
