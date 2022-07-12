@@ -16,17 +16,18 @@ function DashboardPsicologo() {
   const history = useHistory();
   console.log(usuario);
 
-  useEffect(()=>{
-    usuario?.accessToken
-    ?
-      usuario.type !== "psicologo"
-      ?
-      history.push("/dashboard-paciente")
-      :
-      <></>
-    :
-    history.push("/")
-  },[])
+  useEffect(() => {
+    usuario?.accessToken ? (
+      usuario.type !== "psicologo" ? (
+        history.push("/dashboard-paciente")
+      ) : (
+        <></>
+      )
+    ) : (
+      history.push("/")
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     API.get(`/psychologists?userId=${usuario?.id}`)
@@ -35,6 +36,7 @@ function DashboardPsicologo() {
         setPatients(resp.data[0].patients);
       })
       .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const direcionar = (id) => {
