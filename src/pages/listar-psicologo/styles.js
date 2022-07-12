@@ -31,7 +31,7 @@ gap: 1.5rem;
         max-width: 350px;
         border-radius: 13px;
         box-shadow: 0 0 .2rem 0;
-        padding-bottom: 1rem;  
+        padding-bottom: 1rem;
 
         header{
             background-color: #54BAB9;
@@ -63,7 +63,6 @@ gap: 1.5rem;
         }
         .agenda{
             width: 35%;
-
             max-width: 390px;
         }
     }
