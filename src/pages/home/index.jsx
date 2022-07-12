@@ -2,8 +2,28 @@ import { Header } from "../../components/Header";
 import Imagem from "../../assets/imagem.png";
 import { StyledHome } from "./style";
 import { Rodape } from "./style";
+import { useEffect } from "react";
+import { useContext } from "react";
+import { UserContext } from "../../providers/user";
+import { useHistory } from "react-router-dom";
 
 function Home() {
+
+  const {usuario} = useContext(UserContext)
+  const history = useHistory()
+
+  useEffect(()=>{
+    usuario?.accessToken && usuario?.type === "psicologo"
+    ?
+    history.push("/dashboard-psicologo")
+    :
+    usuario?.accessToken && usuario?.type === "paciente"
+    ?
+    history.push("/dashboard-paciente")
+    :
+    <></>
+  })
+  
   return (
     <StyledHome>
       <div className="Imagem">
