@@ -1,8 +1,7 @@
 import { ItemList } from "./styles";
 
 export function ItemLista({
-
-  onclick,
+  onClick,
   typeCard = "pessoa",
   imgPessoa = "https://i.imgur.com/BKFDXpT.png",
   nome = "nome",
@@ -11,7 +10,6 @@ export function ItemLista({
   descricaoProntuario = "descricaoProntuario",
   dataAgendamento = "30/05",
   data = "xx/xx/xxxx",
-
 }) {
   const renderSwitch = (typeCard) => {
     switch (typeCard) {
@@ -74,8 +72,7 @@ export function ItemLista({
     }
   };
   return (
-
-    <ItemList onClick={onclick} typeCard={typeCard}>
+    <ItemList onClick={onClick} typeCard={typeCard}>
       {renderSwitch(typeCard)}
     </ItemList>
   );
