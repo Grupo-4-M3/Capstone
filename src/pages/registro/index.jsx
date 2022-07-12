@@ -9,10 +9,26 @@ import { toast } from "react-toastify";
 import { Header } from "../../components/Header";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../providers/user";
 
 function Registro() {
   const [type, setType] = useState("paciente");
 
+  const {usuario} = useContext(UserContext)
+
+  useEffect(()=>{
+    usuario?.accessToken && usuario?.type === "psicologo"
+    ?
+    history.push("/dashboard-psicologo")
+    :
+    usuario?.accessToken && usuario?.type === "paciente"
+    ?
+    history.push("/dashboard-paciente")
+    :
+    <></>
+  })
+ 
   const schema = yup.object().shape({
     name: yup
       .string()
