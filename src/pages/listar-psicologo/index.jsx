@@ -17,10 +17,8 @@ function ListarPsicologo() {
   const [pessoa, setPessoa] = useState({});
   const [paciente, setPaciente] = useState({});
 
-
-
-  const [data,setData] = useState(new Date());
-  const [horarios,setHorarios] = useState([]);
+  const [data, setData] = useState(new Date());
+  const [horarios, setHorarios] = useState([]);
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -33,18 +31,15 @@ function ListarPsicologo() {
   const { accessToken } = usuario;
   console.log(usuario);
 
-
-  const callBack = (event,horario)=>{
-    console.log(horario)
-    return horario
+  const callBack = (event, horario) => {
+    console.log(horario);
+    return horario;
   };
 
-  const callBackCalendar = (event)=>{
-      setData(event)
-      handleOpen()
-  }
-
-
+  const callBackCalendar = (event) => {
+    setData(event);
+    handleOpen();
+  };
 
   useEffect(() => {
     axios
@@ -65,24 +60,23 @@ function ListarPsicologo() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(()=> {
+  useEffect(() => {
     const { calendar } = pessoa;
     const arrayApoio = [];
     const chaveDia = `dia${data.getTime()}`;
-    if(calendar){
-
-      if(chaveDia in calendar){
-        for(let chave in calendar[chaveDia]){
-          arrayApoio.push(calendar[chaveDia][chave])
+    if (calendar) {
+      if (chaveDia in calendar) {
+        for (let chave in calendar[chaveDia]) {
+          arrayApoio.push(calendar[chaveDia][chave]);
         }
       }
-      setHorarios(arrayApoio)
+      setHorarios(arrayApoio);
     }
-  },[,data])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
   return (
     <SecMain>
-
       <Header type={"dashBoard"} user={paciente} />
       <section className="alinhamento">
         <article className="container">
@@ -97,7 +91,12 @@ function ListarPsicologo() {
           </div>
         </article>
       </section>
-      <ModalHorario open={open} handleClose={handleClose} horarios={horarios} callBack={callBack}/>
+      <ModalHorario
+        open={open}
+        handleClose={handleClose}
+        horarios={horarios}
+        callBack={callBack}
+      />
     </SecMain>
   );
 }
