@@ -96,7 +96,8 @@ function CadastroPaciente() {
           psychologist: "",
         },
       ],
-      calendar: [],
+      calendar: {},
+      email: usuario.email,
     };
 
     API.post("/patients", paciente)

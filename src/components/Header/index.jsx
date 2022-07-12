@@ -4,7 +4,9 @@ import { Button } from "./../Button";
 
 export function Header({ children, user, type, heigth }) {
   const historico = useHistory();
+  console.log(user)
 
+  const imagem = ()=>(user.img === "https://www.attendit.net/images/easyblog_shared/July_2018/7-4-18/totw_network_profile_400.jpg" ? "https://i.imgur.com/BKFDXpT.png" : user.img)
   const levarAoDashboard = () => {
     historico.push("./dashboard");
   };
@@ -75,7 +77,7 @@ export function Header({ children, user, type, heigth }) {
           <div>
             <figure>
               <img
-                src={!!user ? user.img : "https://i.imgur.com/BKFDXpT.png"}
+                src={imagem()}
                 alt=""
               />
             </figure>

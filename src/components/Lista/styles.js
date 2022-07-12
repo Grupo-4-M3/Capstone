@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const SectionList = styled.section`
+<<<<<<< HEAD
   border-radius: 13px;
   box-shadow: 0 0 0.2rem 0;
 
@@ -12,13 +13,47 @@ export const SectionList = styled.section`
 
   header {
     border-radius: 8px 8px 0 0;
+=======
+border-radius: 13px;
+box-shadow: 0 0 .2rem 0;
+
+width: ${({size})=> size};
+max-width: ${({maxSizeWidth})=> maxSizeWidth};
+min-height: ${({sizeY})=> sizeY};
+max-height: ${({maxSize})=> maxSize};
+background-color: #F7ECDE;
+
+    header{
+        border-radius: 8px 8px 0 0;
+
+        background-color: #54BAB9;
+        height: 40px;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        h1{
+            color: white;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+    }
+>>>>>>> fix_DashBoard_parte_2
 
     background-color: #54bab9;
     height: 40px;
 
+<<<<<<< HEAD
     display: flex;
     justify-content: center;
     align-items: center;
+=======
+        display: flex;
+        flex-direction: column;
+        gap: .7rem;
+        overflow: auto;
+>>>>>>> fix_DashBoard_parte_2
 
     flex-direction: column;
     gap: .7rem;
