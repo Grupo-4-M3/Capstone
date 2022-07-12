@@ -1,17 +1,30 @@
 import { useContext, useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import Card from "../../components/Card";
 import { Header } from "../../components/Header";
 import { SecMain } from "./styles";
 import API from "../../services/api";
 import { UserContext } from "../../providers/user";
-import axios from "axios";
 
 function ListarPsicologo() {
   const { usuario } = useContext(UserContext);
+
+  const history = useHistory()
+  
+  useEffect(()=>{
+    usuario?.accessToken
+    ?
+      usuario.type !== "paciente"
+      ?
+      history.push("/dashboard-psicologo")
+      :
+      <></>
+    :
+    history.push("/")
+  },[])
 
   const [pessoa, setPessoa] = useState({});
   const [paciente, setPaciente] = useState({});
@@ -22,23 +35,16 @@ function ListarPsicologo() {
 
   const { id } = params;
 
-  const { accessToken } = usuario;
-  console.log(usuario);
-
   useEffect(() => {
-    axios
-      .get(`https://api-callmind.herokuapp.com/psychologists?userId=${id}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
+
+      API.get(`/psychologists?userId=${id}`)
       .then((resp) => setPessoa(resp.data[0]))
       .catch((err) => console.log(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    API.get(`/patients?userId=${usuario.id}`)
+    API.get(`/patients?userId=${usuario?.id}`)
       .then((resp) => setPaciente(resp.data[0]))
       .catch((err) => console.log(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -57,7 +63,7 @@ function ListarPsicologo() {
           </header>
           <div className="calendario">
             <Calendar value={value} onChange={setValue} />
-            {console.log(value.getTime())}
+            {console.log(value?.getTime())}
           </div>
         </article>
       </section>

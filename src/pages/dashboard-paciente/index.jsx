@@ -10,6 +10,18 @@ import { useHistory } from "react-router-dom";
 function DashboardPaciente() {
   const [psicologos, setPsicologos] = useState([]);
   const [paciente, setPaciente] = useState([]);
+  
+  useEffect(()=>{
+    usuario?.accessToken
+    ?
+      usuario.type !== "paciente"
+      ?
+      history.push("/dashboard-psicologo")
+      :
+      <></>
+    :
+    history.push("/")
+  },[])
 
   const history = useHistory();
 
@@ -23,12 +35,12 @@ function DashboardPaciente() {
   useEffect(() => {
     API.get(`/psychologists`, {
       headers: {
-        Authorization: `Bearer ${usuario.accessToken} `,
+        Authorization: `Bearer ${usuario?.accessToken} `,
       },
     }).then((resp) => setPsicologos(resp.data));
-    API.get(`/patients?userId=${usuario.id}`, {
+    API.get(`/patients?userId=${usuario?.id}`, {
       headers: {
-        Authorization: `Bearer ${usuario.accessToken}`,
+        Authorization: `Bearer ${usuario?.accessToken}`,
       },
     }).then((resp) => setPaciente(resp.data[0]));
 

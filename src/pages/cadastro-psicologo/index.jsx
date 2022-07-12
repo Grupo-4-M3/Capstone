@@ -10,10 +10,23 @@ import { Header } from "../../components/Header";
 import { useHistory } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../providers/user";
+import { useEffect } from "react";
 
 function CadastroPsicologo() {
   const { usuario } = useContext(UserContext);
 
+  useEffect(()=>{
+    usuario?.accessToken && usuario?.type === "psicologo"
+    ?
+    history.push("/dashboard-psicologo")
+    :
+    usuario?.accessToken && usuario?.type === "paciente"
+    ?
+    history.push("/dashboard-paciente")
+    :
+    <></>
+  })
+ 
   const schema = yup.object().shape({
     name: yup
       .string()

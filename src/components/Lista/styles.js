@@ -35,5 +35,6 @@ export const SectionList = styled.section`
 
     display: flex;
     flex-direction: column;
+    gap: .7rem;
   }
 `;

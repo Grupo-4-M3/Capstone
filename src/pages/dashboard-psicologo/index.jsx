@@ -14,9 +14,22 @@ function DashboardPsicologo() {
   const [psicologo, setPsicologo] = useState({});
   const [patients, setPatients] = useState([]);
   const history = useHistory();
+  console.log(usuario);
+
+  useEffect(()=>{
+    usuario?.accessToken
+    ?
+      usuario.type !== "psicologo"
+      ?
+      history.push("/dashboard-paciente")
+      :
+      <></>
+    :
+    history.push("/")
+  },[])
 
   useEffect(() => {
-    API.get(`/psychologists?userId=${usuario.id}`)
+    API.get(`/psychologists?userId=${usuario?.id}`)
       .then((resp) => {
         setPsicologo(resp.data[0]);
         setPatients(resp.data[0].patients);

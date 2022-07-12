@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import Card from "../../components/Card";
 import { Header } from "../../components/Header";
@@ -24,14 +24,25 @@ function ListarPaciente() {
       resolver: yupResolver(schema)
   })
 
+  const history = useHistory()
+  
+  useEffect(()=>{
+    usuario?.accessToken
+    ?
+      usuario.type !== "psicologo"
+      ?
+      history.push("/dashboard-paciente")
+      :
+      <></>
+    :
+    history.push("/")
+  },[])
+
   const { usuario } = useContext(UserContext);
 
   const [pessoa, setPessoa] = useState({});
   const [psicologo, setPsicologo] = useState({});
   const params = useParams();
-
-  console.log(pessoa);
-
 
   const { id } = params;
 
@@ -42,7 +53,7 @@ function ListarPaciente() {
   }, []);
 
   useEffect(() => {
-    API.get(`/psychologists?userId=${usuario.id}`)
+    API.get(`/psychologists?userId=${usuario?.id}`)
       .then((resp) => setPsicologo(resp.data[0]))
       .catch((err) => console.log(err));
   }, []);
