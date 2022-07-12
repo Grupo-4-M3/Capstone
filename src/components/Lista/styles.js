@@ -30,7 +30,16 @@ export const SectionList = styled.section`
   ul {
     padding: 0.5rem;
 
+<<<<<<< HEAD
     display: flex;
     flex-direction: column;
   }
 `;
+=======
+        display: flex;
+        flex-direction: column;
+        gap: .7rem;
+
+    }
+`;
+>>>>>>> develop

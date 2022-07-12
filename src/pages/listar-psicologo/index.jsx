@@ -47,11 +47,11 @@ function ListarPsicologo() {
   return (
     <SecMain>
       <Header type={"dashBoard"} user={paciente} />
-      <div className="alinhamento">
-        <section className="container">
+      <section className="alinhamento">
+        <article className="container">
           <Card type={"psicologo"} pessoa={pessoa} maxSizeY="70vh" />
-        </section>
-        <section className="agenda">
+        </article>
+        <article className="agenda">
           <header>
             <h3>Agenda</h3>
           </header>
@@ -59,8 +59,8 @@ function ListarPsicologo() {
             <Calendar value={value} onChange={setValue} />
             {console.log(value.getTime())}
           </div>
-        </section>
-      </div>
+        </article>
+      </section>
     </SecMain>
   );
 }
