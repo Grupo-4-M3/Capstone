@@ -10,6 +10,7 @@ import API from "../../services/api";
 import { UserContext } from "../../providers/user";
 import axios from "axios";
 import { ModalHorario } from "../../components/ModalHorario";
+import ModalConfirmation from "../../components/modal_confirmacao";
 
 function ListarPsicologo() {
   const { usuario } = useContext(UserContext);
@@ -19,10 +20,13 @@ function ListarPsicologo() {
 
   const [data, setData] = useState(new Date());
   const [horarios, setHorarios] = useState([]);
+  const [confirmHorario, setConfirmHorario] = useState({});
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [confirm, setConfirm] = useState(false);
 
   const params = useParams();
 
@@ -32,7 +36,9 @@ function ListarPsicologo() {
   console.log(usuario);
 
   const callBack = (event, horario) => {
-    console.log(horario);
+    handleClose();
+    setConfirm(true);
+    setConfirmHorario(horario);
     return horario;
   };
 
@@ -96,6 +102,14 @@ function ListarPsicologo() {
         handleClose={handleClose}
         horarios={horarios}
         callBack={callBack}
+      />
+      <ModalConfirmation
+        dia={"dia" + data.getTime()}
+        open={confirm}
+        setOpen={setConfirm}
+        evento={confirmHorario}
+        paciente={paciente}
+        psicologo={pessoa}
       />
     </SecMain>
   );

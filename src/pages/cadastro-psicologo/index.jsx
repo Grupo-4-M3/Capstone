@@ -60,6 +60,7 @@ function CadastroPsicologo() {
       working_days,
       patients: [],
       calendar: {},
+      email: usuario.email,
     };
 
     API.post("/psychologists", psicologo)

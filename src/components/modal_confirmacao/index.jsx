@@ -15,50 +15,66 @@ function ModalConfirmation({
   psicologo,
 }) {
   const updateCalendars = (res) => {
+    console.log(res);
     const newEvent = {
       ...evento,
       paciente: paciente,
       disponivel: false,
-      link: res?.data?.hangoutLink,
-      id_reunião: res?.data?.id,
+      link: res?.data?.data.hangoutLink,
+      id_reuniao: res?.data?.data.id,
     };
     const newPacient = {
       ...paciente,
     };
     const newPatients = () => {
-      const jaExiste = psicologo.patients.find(
-        (patient) => patient.id === paciente.id
+      const newArray = psicologo.patients.filter(
+        (patient) => patient.id !== paciente.id
       );
-      if (jaExiste) {
-        return psicologo.patients;
-      }
-      return [...psicologo.patients, paciente];
+      return [paciente, ...newArray];
     };
     const newPsicologo = {
       ...psicologo,
       patients: newPatients(),
     };
-    newPacient.calendar[dia]["hora" + evento?.horario?.split(":")[0]] =
-      newEvent;
-    newPsicologo.calendar[dia]["hora" + evento?.horario?.split(":")[0]] =
-      newEvent;
+    if (!newPacient?.calendar[dia]) {
+      newPacient.calendar[dia] = {
+        ["hora" + evento?.horario?.split(":")[0]]: newEvent,
+      };
+    } else {
+      newPacient.calendar[dia]["hora" + evento?.horario?.split(":")[0]] =
+        newEvent;
+    }
+    if (!newPsicologo?.calendar[dia]) {
+      newPsicologo.calendar[dia] = {
+        ["hora" + evento?.horario?.split(":")[0]]: newEvent,
+      };
+    } else {
+      newPsicologo.calendar[dia]["hora" + evento?.horario?.split(":")[0]] =
+        newEvent;
+    }
+
+    console.log(newPacient);
+    console.log(newPsicologo);
+
     API.patch(`/patients/${paciente.id}`, newPacient);
     API.patch(`/psychologists/${psicologo.id}`, newPsicologo);
   };
 
   const googleResponse = (res) => {
     const { code } = res;
+    console.log(code);
     axios
       .post("http://localhost:4000/api/create-tokens", { code })
       .then((res) => {
+        console.log(res);
         axios
           .post("http://localhost:4000/api/create-event", {
             summary: `Consulta de ${paciente?.name} com ${psicologo?.name}`,
             description: `Queixas do paciente: ${paciente?.complaint}`,
             location: "Online",
-            startDateTime: evento.hora,
-            endDateTime: evento.hora,
-            attendees: [{ email: paciente.email }, { email: psicologo.email }],
+            startDateTime: "2022-07-12T14:30",
+            endDateTime: "2022-07-12T14:40",
+            attendees: [{ email: "renan.martiniduarte@gmail.com" }],
           })
           .then((res) => {
             toast.success("Evento Agendado com sucesso!");
