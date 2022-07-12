@@ -1,6 +1,22 @@
 import axios from "axios";
 
-export const API = axios.create({
-  baseURL: "<base_url>",
+const API = axios.create({
+  baseURL: "https://api-callmind.herokuapp.com",
   timeout: 5000,
 });
+
+API.interceptors.request.use((configuracoes) => {
+  const usuario = JSON.parse(localStorage.getItem("user"));
+
+  return {
+    ...configuracoes,
+    headers: {
+      ...configuracoes.headers,
+      Authorization: usuario?.accessToken
+        ? `Bearer ${usuario?.accessToken}`
+        : "",
+    },
+  };
+});
+
+export default API;
