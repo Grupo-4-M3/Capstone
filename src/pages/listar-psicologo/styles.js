@@ -3,10 +3,7 @@ export const SecMain = styled.main`
 background-color:  #FBF8F1;
 width: 100%;
 min-height: 100vh;
-<<<<<<< HEAD
 
-=======
->>>>>>> fix_DashBoard_parte_2
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -14,13 +11,8 @@ gap: 1.5rem;
     .alinhamento{
         background-color:  #FBF8F1;
         width: 100%;
-<<<<<<< HEAD
 
         height: 100vw;
-
-=======
-        height: 100vw;
->>>>>>> fix_DashBoard_parte_2
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -35,19 +27,12 @@ gap: 1.5rem;
     .agenda{
         background-color: #FBF8F1;
         width: 90%;
-<<<<<<< HEAD
 
-        max-width: 350px;
-        border-radius: 13px;
-        box-shadow: 0 0 .2rem 0;
-        padding-bottom: 1rem;  
-
-=======
         max-width: 350px;
         border-radius: 13px;
         box-shadow: 0 0 .2rem 0;
         padding-bottom: 1rem;
->>>>>>> fix_DashBoard_parte_2
+
         header{
             background-color: #54BAB9;
             color: white;
@@ -69,10 +54,7 @@ gap: 1.5rem;
             justify-content: center;
             align-items: flex-start;
             padding-top: 3.5rem;
-<<<<<<< HEAD
 
-=======
->>>>>>> fix_DashBoard_parte_2
             height: 80vh;
         }
         .container{
@@ -81,10 +63,6 @@ gap: 1.5rem;
         }
         .agenda{
             width: 35%;
-<<<<<<< HEAD
-
-=======
->>>>>>> fix_DashBoard_parte_2
             max-width: 390px;
         }
     }
