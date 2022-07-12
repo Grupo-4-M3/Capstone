@@ -20,6 +20,9 @@ export const SectionList = styled.section`
     justify-content: center;
     align-items: center;
 
+    flex-direction: column;
+    gap: .7rem;
+
     h1 {
       color: white;
       font-size: 1.6rem;

@@ -74,10 +74,14 @@ export function Header({ children, user, type, heigth }) {
           </h1>
           <div>
             <figure>
-              <img src={!!user ? user.img : ""} alt="" />
+              <img
+                src={!!user ? user.img : "https://i.imgur.com/BKFDXpT.png"}
+                alt=""
+              />
             </figure>
             <div>
-              <h2>{!!user ? user.name : "Teste"}</h2>
+              <h2>{!!user ? `${user?.name?.split(" ")[0]}` : "User1"}</h2>
+
               <Button nameButton={"Logout"}></Button>
             </div>
           </div>

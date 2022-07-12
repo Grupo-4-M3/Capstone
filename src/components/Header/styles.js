@@ -31,10 +31,18 @@ export const StyledHeader = styled.header`
     gap: 0.1rem;
   }
   & figure {
-    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
+    border: 1px solid #448382;
+  }
+  & figure img {
+    width: 3rem;
+    height: 3rem;
   }
   ${(props) =>
     props.dash &&
@@ -44,6 +52,7 @@ export const StyledHeader = styled.header`
         gap: 0.5rem;
       }
       & div div {
+        color: #448382;
         flex-direction: column;
         gap: 0.08rem;
       }

@@ -6,7 +6,11 @@ background-color:  #FBF8F1;
 
 
 width: 100%;
+<<<<<<< HEAD
+min-height: 100vh;
+=======
 height: 100vh;
+>>>>>>> origin/fix_Header
 
 display: flex;
 flex-direction: column;
@@ -19,7 +23,10 @@ gap: 1.5rem;
 
 
         width: 100%;
+<<<<<<< HEAD
+=======
         height: 100vw;
+>>>>>>> origin/fix_Header
 
         display: flex;
         flex-direction: column;
@@ -40,9 +47,16 @@ gap: 1.5rem;
         background-color: #FBF8F1;
 
         width: 90%;
+<<<<<<< HEAD
+        max-width: 350px;
+        border-radius: 13px;
+        box-shadow: 0 0 .2rem 0;
+        padding-bottom: 1rem;
+=======
         border-radius: 13px;
         box-shadow: 0 0 .2rem 0;
         padding-bottom: 1rem;       
+>>>>>>> origin/fix_Header
 
         header{
             background-color: #54BAB9;
@@ -72,7 +86,10 @@ gap: 1.5rem;
             align-items: flex-start;
 
             padding-top: 3.5rem;
+<<<<<<< HEAD
+=======
             height: 80vh;
+>>>>>>> origin/fix_Header
         }
         
         .container{
@@ -83,7 +100,11 @@ gap: 1.5rem;
 
         .agenda{
             width: 35%;
+<<<<<<< HEAD
+            max-width: 350px;
+=======
             max-width: 390px;
+>>>>>>> origin/fix_Header
         }
     }
 `;
