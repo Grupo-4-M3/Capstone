@@ -8,6 +8,7 @@ export const ItemList = styled.li`
   max-height: 6.8rem;
   padding: 0.3rem;
 
+  display: flex;
   justify-content: ${({ typeCard }) =>
     typeCard === "horario" ? "center" : "space-between"};
   align-items: center;

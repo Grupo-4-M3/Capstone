@@ -5,15 +5,21 @@ import { List } from "../../components/Lista";
 import { UserContext } from "../../providers/user";
 import API from "../../services/api";
 import { StyledDashboardPaciente } from "./style";
+import { useHistory } from "react-router-dom";
 
 function DashboardPaciente() {
   const [psicologos, setPsicologos] = useState([]);
   const [paciente, setPaciente] = useState([]);
+
+  const history = useHistory();
+
+  let diaAtual = new Date();
+  diaAtual.setHours("00", "00", "00", "00");
+
   const [horario, setHorario] = useState([]);
 
   const { usuario } = useContext(UserContext);
-  console.log(usuario);
-  console.log(paciente.calendar);
+
   useEffect(() => {
     API.get(`/psychologists`, {
       headers: {
@@ -25,17 +31,21 @@ function DashboardPaciente() {
         Authorization: `Bearer ${usuario.accessToken}`,
       },
     }).then((resp) => setPaciente(resp.data[0]));
-    //tirar aviso
-  }, []);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  console.log(psicologos);
+  console.log(paciente.calendar);
   for (var prop in paciente.calendar) {
-    // ctrl+shift+k (para abrir o console no mozilla firefox)
-    for (var hora in paciente.calendar[prop]) {
-      paciente.calendar[prop][hora].disponivel &&
-        setHorario(...horario, paciente.calendar[prop][hora]);
+    if (parseInt(prop.replace("dia", "")) >= diaAtual.getTime()) {
+      for (var hora in paciente.calendar[prop]) {
+        paciente.calendar[prop][hora].disponivel &&
+          setHorario(...horario, paciente.calendar[prop][hora]);
+      }
     }
   }
-
+  console.log(horario);
+  console.log(diaAtual.getTime());
   return (
     <StyledDashboardPaciente>
       <Header type={"dashBoard"} user={paciente} />
@@ -44,19 +54,32 @@ function DashboardPaciente() {
           <List tituloList={"PSICÓLOGOS"} size={"100%"} sizeY={"200px"}>
             {psicologos.map((psico) => (
               <ItemLista
-                sx={"cursor:pointer;"}
+                typeCard="pessoa"
                 descricao={`${psico.emphasis} `}
                 nome={psico.name}
                 imgPessoa={psico.img}
                 key={psico.id}
-                onClick={() => console.log("ok")}
+                onClick={() => history.push(`/psicologo/${psico.userId}`)}
               />
             ))}
           </List>
         </div>
         <div className="horarios">
           <List tituloList={"Meus Horários"} size={"100%"} sizeY={"100px"}>
-            <ItemLista dataAgendamento="15/08/22" typeCard="agendamento" />
+            {horario.map((hora) => (
+              <ItemLista
+                dataAgendamento={new Intl.DateTimeFormat("pt-BR").format(
+                  new Date(hora.dia)
+                )}
+                nome={hora.psicologo.name}
+                horario={hora.horario}
+                typeCard="agendamentoPaciente"
+              />
+            ))}
+            <ItemLista
+              dataAgendamento="15/08/22"
+              typeCard="agendamentoPaciente"
+            />
           </List>
         </div>
       </div>

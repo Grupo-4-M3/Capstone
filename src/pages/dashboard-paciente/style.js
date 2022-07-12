@@ -12,6 +12,11 @@ export const StyledDashboardPaciente = styled.div`
     height: 80vh;
 
     width: 90%;
+    .psicologos {
+      li {
+        cursor: pointer;
+      }
+    }
     .psicologos .horarios {
       width: 100%;
     }
