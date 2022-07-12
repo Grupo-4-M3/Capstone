@@ -16,11 +16,11 @@ function CadastroPsicologo() {
   const { usuario } = useContext(UserContext);
 
   useEffect(()=>{
-    usuario?.accessToken && usuario?.type === "psicologo"
+    usuario?.accessToken && usuario?.type === "psicologo" && !usuario?.firstLogin
     ?
     history.push("/dashboard-psicologo")
     :
-    usuario?.accessToken && usuario?.type === "paciente"
+    usuario?.accessToken && usuario?.type === "paciente" && !usuario?.firstLogin
     ?
     history.push("/dashboard-paciente")
     :
@@ -72,7 +72,8 @@ function CadastroPsicologo() {
       schedules,
       working_days,
       patients: [],
-      calendar: [],
+      calendar: {},
+      email: usuario.email,
     };
 
     API.post("/psychologists", psicologo)
