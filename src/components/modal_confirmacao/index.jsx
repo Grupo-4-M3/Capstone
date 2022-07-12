@@ -1,10 +1,11 @@
-import { Box, Modal } from "@mui/material";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import API from "../../services/api";
 import { Button } from "../Button";
-import { style } from "./style";
+import { StyledModalConfirm } from "./style";
 
 function ModalConfirmation({
   dia,
@@ -14,59 +15,44 @@ function ModalConfirmation({
   paciente,
   psicologo,
 }) {
+  const [newEventState, setNewEventState] = useState({});
+  useEffect(() => {
+    setNewEventState(evento);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const updateCalendars = (res) => {
-    console.log(res);
     const newEvent = {
       ...evento,
       paciente: paciente,
+      psicologo: psicologo,
       disponivel: false,
       link: res?.data?.data.hangoutLink,
       id_reuniao: res?.data?.data.id,
     };
-    const newPacient = {
-      ...paciente,
-    };
-    const newPatients = () => {
-      const newArray = psicologo.patients.filter(
-        (patient) => patient.id !== paciente.id
-      );
-      return [paciente, ...newArray];
-    };
-    const newPsicologo = {
-      ...psicologo,
-      patients: newPatients(),
-    };
-    if (!newPacient?.calendar[dia]) {
-      newPacient.calendar[dia] = {
-        ["hora" + evento?.horario?.split(":")[0]]: newEvent,
-      };
-    } else {
-      newPacient.calendar[dia]["hora" + evento?.horario?.split(":")[0]] =
-        newEvent;
-    }
-    if (!newPsicologo?.calendar[dia]) {
-      newPsicologo.calendar[dia] = {
-        ["hora" + evento?.horario?.split(":")[0]]: newEvent,
-      };
-    } else {
-      newPsicologo.calendar[dia]["hora" + evento?.horario?.split(":")[0]] =
-        newEvent;
-    }
 
-    console.log(newPacient);
-    console.log(newPsicologo);
+    const newPaciente = {
+      calendar: {
+        ...paciente.calendar,
+        [`${dia}`]: {
+          ...paciente.calendar[`${dia}`],
+          [`hora${evento.horario.split(":")[0]}`]: newEvent,
+        },
+      },
+    };
 
-    API.patch(`/patients/${paciente.id}`, newPacient);
-    API.patch(`/psychologists/${psicologo.id}`, newPsicologo);
+    API.patch(`/patients/${paciente.id}`, newPaciente)
+      .then((res) => setNewEventState(newEvent))
+      .catch((erro) => console.log(erro));
+    API.patch(`/psychologists/${psicologo.id}`, newPaciente).catch((erro) =>
+      console.log(erro)
+    );
   };
 
   const googleResponse = (res) => {
     const { code } = res;
-    console.log(code);
     axios
       .post("http://localhost:4000/api/create-tokens", { code })
       .then((res) => {
-        console.log(res);
         axios
           .post("http://localhost:4000/api/create-event", {
             summary: `Consulta de ${paciente?.name} com ${psicologo?.name}`,
@@ -74,7 +60,7 @@ function ModalConfirmation({
             location: "Online",
             startDateTime: "2022-07-12T14:30",
             endDateTime: "2022-07-12T14:40",
-            attendees: [{ email: "renan.martiniduarte@gmail.com" }],
+            attendees: [{ email: paciente.email }, { email: psicologo.email }],
           })
           .then((res) => {
             toast.success("Evento Agendado com sucesso!");
@@ -95,17 +81,28 @@ function ModalConfirmation({
   });
 
   return (
-    <Modal open={open} onClose={() => setOpen(false)}>
-      <Box sx={style}>
-        <Button
-          onclick={login}
-          nameButton="Confirmar"
-          backcolor="#54BAB9"
-          size="100px"
-          sizeY="50px"
-        />
-      </Box>
-    </Modal>
+    <StyledModalConfirm open={open} onClose={() => setOpen(false)}>
+      <div className="buttonDiv">
+        {newEventState.disponivel ? (
+          <Button
+            onclick={login}
+            nameButton="Confirmar"
+            backcolor="#54BAB9"
+            size="100px"
+            sizeY="50px"
+          />
+        ) : (
+          <a href={`${evento.link}`} target="_blank" rel="noreferrer">
+            <Button
+              nameButton="Ir para chamada"
+              backcolor="#54BAB9"
+              size="100px"
+              sizeY="50px"
+            />
+          </a>
+        )}
+      </div>
+    </StyledModalConfirm>
   );
 }
 
