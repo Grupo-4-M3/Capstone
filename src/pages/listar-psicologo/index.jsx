@@ -16,6 +16,8 @@ function ListarPsicologo() {
   const [pessoa, setPessoa] = useState({});
   const [paciente, setPaciente] = useState({});
 
+  const [value, setValue] = useState();
+
   const params = useParams();
 
   const { id } = params;
@@ -54,7 +56,8 @@ function ListarPsicologo() {
             <h3>Agenda</h3>
           </header>
           <div className="calendario">
-            <Calendar />
+            <Calendar value={value} onChange={setValue} />
+            {console.log(value.getTime())}
           </div>
         </article>
       </section>

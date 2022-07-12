@@ -29,8 +29,12 @@ function Home() {
           Renan Martini
         </span>
         <span>
-          <strong>Q.A.: </strong>
-          Abner Leal, Rodolfo Jaques
+          <strong>Q.A. :</strong>
+          Abner Leal
+        </span>
+        <span>
+          <strong>Q.A. :</strong>
+          Rodolfo Jaques
         </span>
       </Rodape>
     </StyledHome>

@@ -39,7 +39,9 @@ function Routes() {
       <Route path="/psicologo/:id" exact>
         <ListarPsicologo />
       </Route>
-      <Route path="/"></Route>
+      <Route path="/">
+        <Home />
+      </Route>
     </Switch>
   );
 }

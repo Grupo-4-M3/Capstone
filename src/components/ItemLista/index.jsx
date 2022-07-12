@@ -1,6 +1,7 @@
 import { ItemList } from "./styles";
 
 export function ItemLista({
+
   onclick,
   typeCard = "pessoa",
   imgPessoa = "https://i.imgur.com/BKFDXpT.png",
@@ -10,6 +11,7 @@ export function ItemLista({
   descricaoProntuario = "descricaoProntuario",
   dataAgendamento = "30/05",
   data = "xx/xx/xxxx",
+
 }) {
   const renderSwitch = (typeCard) => {
     switch (typeCard) {
@@ -35,7 +37,19 @@ export function ItemLista({
         return (
           <div className="agendamento">
             <div className="div_nomePas">
-              <h3>Pas: {nome}</h3>
+              <h3>Pac: {nome}</h3>
+            </div>
+            <div className="div_descData">
+              <p className="dataAgenda">{dataAgendamento}</p>
+              <p className="hora">{horario}</p>
+            </div>
+          </div>
+        );
+      case "agendamentoPaciente":
+        return (
+          <div className="agendamento">
+            <div className="div_nomePas">
+              <h3>Psi: {nome}</h3>
             </div>
             <div className="div_descData">
               <p className="dataAgenda">{dataAgendamento}</p>
@@ -60,6 +74,7 @@ export function ItemLista({
     }
   };
   return (
+
     <ItemList onClick={onclick} typeCard={typeCard}>
       {renderSwitch(typeCard)}
     </ItemList>
