@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ItemList = styled.li`
-
+cursor: pointer;
 border-radius: 13px;
 background-color: #E9DAC1;
 
@@ -20,9 +20,12 @@ justify-content: ${({typeCard})=> (
 align-items: center;
 gap: .3rem;
 
+&.brilho{
+    filter: brightness(80%)
+}
     .div_img{
         padding: .3rem;
-
+      
         width: 55px;
         min-height: 3rem;
 

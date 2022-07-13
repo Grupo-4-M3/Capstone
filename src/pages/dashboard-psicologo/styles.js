@@ -36,11 +36,58 @@ export const BoxLista = styled.section`
   }
 `;
 
+export const BoxCont = styled.section`
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 30px;
+
+  &.listinha{
+    
+    border-radius: 13px 13px 0 0;
+    box-shadow: 0 0 0.2rem 0;
+    margin: 6vh 0;
+    width: 90%;
+
+    @media (min-width: 400px) {
+    width: 80%;
+  }
+  @media (min-width: 500px) {
+    width: 70%;
+  }
+  @media (min-width: 600px) {
+    width: 60%;
+  }
+  @media (min-width: 700px) {
+    width: 50%;
+  }
+  @media (min-width: 800px) {
+    /* margin: 0 10vh 0 0; */
+    width: 60%;
+  }
+  @media (min-width: 1000px) {
+    width: 50%;
+  }
+  @media (min-width: 1200px) {
+    /* margin: 0 15vh 0 0; */
+    width: 40%;
+  }
+  }
+  
+  @media (min-width: 1200px) {
+    margin: 0 15vh 0 0;
+  }
+
+`
+
 export const Agenda = styled.section`
   background-color: #fbf8f1;
   border-radius: 13px 13px 0 0;
   box-shadow: 0 0 0.2rem 0;
-  margin: 6vh 0;
+  /* margin: 6vh 0; */
   width: 90%;
 
   header {
@@ -79,7 +126,7 @@ export const Agenda = styled.section`
     width: 50%;
   }
   @media (min-width: 1200px) {
-    margin: 0 15vh 0 0;
+    /* margin: 0 15vh 0 0; */
     width: 40%;
   }
 `;

@@ -73,7 +73,9 @@ function ListarPsicologo() {
 
       if(chaveDia in calendar){
         for(let chave in calendar[chaveDia]){
-          arrayApoio.push(calendar[chaveDia][chave])
+          if(calendar[chaveDia][chave].disponivel){
+            arrayApoio.push(calendar[chaveDia][chave])
+          }
         }
       }
       setHorarios(arrayApoio)

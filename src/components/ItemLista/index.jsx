@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ItemList } from "./styles";
 
 export function ItemLista({
@@ -10,7 +11,23 @@ export function ItemLista({
   descricaoProntuario = "descricaoProntuario",
   dataAgendamento = "30/05",
   data = "xx/xx/xxxx",
+  hora
 }) {
+  const formatarData = (data)=>{
+    const desformatada = new Date(data)
+    const formatada = new Intl.DateTimeFormat('pt-BR').format(desformatada)
+    return formatada
+  }
+
+  const [brilho,setBrilho]= useState(false);
+
+  const mudaBrilho = ()=>{
+     setBrilho(!brilho)
+     onclick(hora)
+  }
+
+
+
   const renderSwitch = (typeCard) => {
     switch (typeCard) {
       case "pessoa":
@@ -38,7 +55,7 @@ export function ItemLista({
               <h3>Pas: {nome}</h3>
             </div>
             <div className="div_descData">
-              <p className="dataAgenda">{dataAgendamento}</p>
+              <p className="dataAgenda">{formatarData(dataAgendamento)}</p>
               <p className="hora">{horario}</p>
             </div>
           </div>
@@ -60,7 +77,7 @@ export function ItemLista({
     }
   };
   return (
-    <ItemList onClick={onclick} typeCard={typeCard}>
+    <ItemList onClick={typeCard === "horario"? mudaBrilho : onclick }  typeCard={typeCard} className={brilho? "brilho" : ""}>
       {renderSwitch(typeCard)}
     </ItemList>
   );

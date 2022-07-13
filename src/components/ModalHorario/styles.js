@@ -8,5 +8,6 @@ export const StyledModal = styled(Modal)`
     align-items: center;
     text-align: center;
 
+ 
 
 `
