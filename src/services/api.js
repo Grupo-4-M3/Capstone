@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://api-callmind.herokuapp.com",
-  timeout: 5000,
+  baseURL: "https://api-callmind.herokuapp.com"
 });
 
 API.interceptors.request.use((configuracoes) => {

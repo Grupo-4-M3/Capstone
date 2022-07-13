@@ -69,7 +69,7 @@ function DashboardPsicologo() {
         agendaApoio[`dia${data}`][`hora${i}`] = {
           id_reuniao: "",
           link: "",
-          psicologo: psicologo,
+          psicologo: {name: psicologo.name, email: psicologo.email,id: psicologo.id},
           paciente: {},
           compareceu: true,
           disponivel: true,
@@ -87,7 +87,7 @@ function DashboardPsicologo() {
         agendaApoio[`dia${data}`][`hora${i}`] = {
           id_reuniao: "",
           link: "",
-          psicologo: psicologo,
+          psicologo: {name: psicologo.name, email: psicologo.email,id: psicologo.id},
           paciente: {},
           compareceu: true,
           disponivel: true,
@@ -118,6 +118,7 @@ function DashboardPsicologo() {
 
   const direcionar = (id) => {
     console.log("clicou");
+    debugger
     return history.push(`/paciente/${id}`);
   };
 

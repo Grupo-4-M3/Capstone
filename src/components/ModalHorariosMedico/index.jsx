@@ -53,9 +53,21 @@ export const ModalHorariosMedico = ({open,handleClose,dia,psicologo})=>{
 
             API.patch(`/psychologists/${psicologo.id}`,{calendar: psicologo.calendar}).then((res)=>{
 
-                toast.success("Horários disponibilizados com sucesso!")
-                handleClose()
-                window.location.reload()
+                // handleClose()
+                // window.location.reload()
+                const resolveAfter = new Promise((resolve) =>
+                    setTimeout(() => {
+                        handleClose()
+                        window.location.reload()
+                        resolve();
+                    }, 3000)
+                    );
+                    toast.promise(resolveAfter, {
+                    pending: "Enviando dados ao sistema...",
+                    success: "Dados enviads com sucesso!",
+                    error: "Falha no Envio de Dados.",
+                    });
+                
             }).catch(err=>console.log(err)
                 )
         }
@@ -65,9 +77,23 @@ export const ModalHorariosMedico = ({open,handleClose,dia,psicologo})=>{
             console.log(psicologo.calendar[novoDia])
 
             API.patch(`/psychologists/${psicologo.id}`,{calendar: psicologo.calendar}).then((res)=>{
-                toast.success("Horários disponibilizados com sucesso!")
-                handleClose()}).catch(err=>console.log(err))
-                window.location.reload()
+
+                // handleClose()
+                // window.location.reload()
+                const resolveAfter = new Promise((resolve) =>
+                    setTimeout(() => {
+                        handleClose()
+                        window.location.reload()
+                        resolve();
+                    }, 3000)
+                    );
+                    toast.promise(resolveAfter, {
+                    pending: "Enviando dados ao sistema...",
+                    success: "Dados enviads com sucesso!",
+                    error: "Falha no Envio de Dados.",
+                    });
+                }).catch(err=>console.log(err))
+                
         }
 
     }
