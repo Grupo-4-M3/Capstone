@@ -14,9 +14,11 @@ export const Box = styled.section`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 100%;
+  width: 90%;
+  margin: auto;
   margin-top: 6vh;
   gap: 1.8rem;
+  max-width: 1400px;
 
   @media (min-width: 768px) {
     flex-direction: column;
@@ -32,22 +34,25 @@ export const Box = styled.section`
     gap: 3rem;
   }
   @media (min-width: 1100px) {
-
     gap: 8rem;
   }
 `;
 
 export const BoxLista = styled.section`
-
   display: flex;
   align-items: center;
   justify-content: center;
 
+  width: 90%;
 
+  @media (min-width: 465px) {
+    min-width: 360px;
+    width: 73%;
+    max-width: 1000px;
+  }
 `;
 
 export const BoxCont = styled.section`
-
   box-sizing: border-box;
 
   display: flex;
@@ -58,36 +63,33 @@ export const BoxCont = styled.section`
 
   max-width: 400px;
 
-  &.listinha{
-    
+  &.listinha {
     border-radius: 13px 13px 0 0;
     box-shadow: 0 0 0.2rem 0;
- 
+
     width: 90%;
 
     @media (min-width: 400px) {
-    width: 80%;
-  }
-  @media (min-width: 500px) {
-    width: 70%;
-  }
-  @media (min-width: 600px) {
-    width: 60%;
-  }
-  @media (min-width: 700px) {
-    width: 50%;
-  }
-  @media (min-width: 800px) {
-
-    width: 60%;
-  }
-  @media (min-width: 1000px) {
-    width: 50%;
-  }
-  @media (min-width: 1200px) {
-
-    width: 40%;
-  }
+      width: 80%;
+    }
+    @media (min-width: 500px) {
+      width: 70%;
+    }
+    @media (min-width: 600px) {
+      width: 60%;
+    }
+    @media (min-width: 700px) {
+      width: 50%;
+    }
+    @media (min-width: 800px) {
+      width: 60%;
+    }
+    @media (min-width: 1000px) {
+      width: 50%;
+    }
+    @media (min-width: 1200px) {
+      width: 40%;
+    }
   }
 
   @media (min-width: 768px) {
@@ -97,18 +99,16 @@ export const BoxCont = styled.section`
     gap: 3rem;
   }
   @media (min-width: 900px) {
-    max-width: 236px;
+    max-width: 400px;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     gap: 1rem;
   }
-  
+
   @media (min-width: 1200px) {
-
   }
-
-`
+`;
 
 export const Agenda = styled.section`
   background-color: #fbf8f1;
@@ -116,7 +116,7 @@ export const Agenda = styled.section`
   box-shadow: 0 0 0.2rem 0;
   /* margin: 6vh 0; */
   width: 90%;
-  max-width: 340px;
+  max-width: 480px;
 
   header {
     background-color: #54bab9;
@@ -133,7 +133,7 @@ export const Agenda = styled.section`
   div {
     width: 100%;
   }
-/* 
+  /* 
   @media (min-width: 400px) {
     width: 80%;
   }
