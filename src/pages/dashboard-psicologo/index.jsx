@@ -46,7 +46,6 @@ function DashboardPsicologo() {
   useEffect(() => {
     API.get(`/psychologists?userId=${usuario?.id}`)
       .then((resp) => {
-        console.log(resp.data[0]);
         setPsicologo(resp.data[0]);
         setPatients(resp.data[0].patients);
       })

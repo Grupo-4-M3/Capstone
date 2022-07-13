@@ -67,8 +67,10 @@ function ListarPaciente() {
 
     const novoArray = [...pessoa.medical_records, data];
 
+
     atualizaProntuario({ medical_records: novoArray });
   };
+
 
   function atualizaProntuario(data) {
     API.patch(`/patients/${pessoa.id}`, data)

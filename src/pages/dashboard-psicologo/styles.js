@@ -106,15 +106,10 @@ export const BoxCont = styled.section`
     gap: 1rem;
   }
 
-  @media (min-width: 1200px) {
-  }
-`;
-
 export const Agenda = styled.section`
   background-color: #fbf8f1;
   border-radius: 13px 13px 0 0;
   box-shadow: 0 0 0.2rem 0;
-  /* margin: 6vh 0; */
   width: 90%;
   max-width: 480px;
 
@@ -133,26 +128,4 @@ export const Agenda = styled.section`
   div {
     width: 100%;
   }
-  /* 
-  @media (min-width: 400px) {
-    width: 80%;
-  }
-  @media (min-width: 500px) {
-    width: 70%;
-  }
-  @media (min-width: 600px) {
-    width: 60%;
-  }
-  @media (min-width: 700px) {
-    width: 50%;
-  }
-  @media (min-width: 800px) {
-    width: 60%;
-  }
-  @media (min-width: 1000px) {
-    width: 50%;
-  }
-  @media (min-width: 1200px) {
-    width: 40%;
-  } */
 `;
