@@ -11,22 +11,20 @@ export function ItemLista({
   descricaoProntuario = "descricaoProntuario",
   dataAgendamento = "30/05",
   data = "xx/xx/xxxx",
-  hora
+  hora,
 }) {
-  const formatarData = (data)=>{
-    const desformatada = new Date(data)
-    const formatada = new Intl.DateTimeFormat('pt-BR').format(desformatada)
-    return formatada
-  }
+  const formatarData = (data) => {
+    const desformatada = new Date(data);
+    const formatada = new Intl.DateTimeFormat("pt-BR").format(desformatada);
+    return formatada;
+  };
 
-  const [brilho,setBrilho]= useState(false);
+  const [brilho, setBrilho] = useState(false);
 
-  const mudaBrilho = ()=>{
-     setBrilho(!brilho)
-     onclick(hora)
-  }
-
-
+  const mudaBrilho = () => {
+    setBrilho(!brilho);
+    onclick(hora);
+  };
 
   const renderSwitch = (typeCard) => {
     switch (typeCard) {
@@ -48,14 +46,14 @@ export function ItemLista({
             <h2>{horario}</h2>
           </>
         );
-      case "agendamento ":
+      case "agendamento":
         return (
           <div className="agendamento">
             <div className="div_nomePas">
               <h3>Pac: {nome}</h3>
             </div>
             <div className="div_descData">
-              <p className="dataAgenda">{dataAgendamento}</p>
+              <p className="dataAgenda">{formatarData(dataAgendamento)}</p>
               <p className="hora">{horario}</p>
             </div>
           </div>
@@ -89,7 +87,11 @@ export function ItemLista({
     }
   };
   return (
-    <ItemList onClick={typeCard === "horario"? mudaBrilho : onclick }  typeCard={typeCard} className={brilho? "brilho" : ""}>
+    <ItemList
+      onClick={typeCard === "horario" ? mudaBrilho : onclick}
+      typeCard={typeCard}
+      className={brilho ? "brilho" : ""}
+    >
       {renderSwitch(typeCard)}
     </ItemList>
   );
