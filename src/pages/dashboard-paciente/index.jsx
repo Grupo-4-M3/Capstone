@@ -26,6 +26,19 @@ function DashboardPaciente() {
 
   const history = useHistory();
 
+  useEffect(() => {
+    usuario?.accessToken ? (
+      usuario.type !== "paciente" ? (
+        history.push("/dashboard-psicologo")
+      ) : (
+        <></>
+      )
+    ) : (
+      history.push("/")
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   let diaAtual = new Date();
   diaAtual.setHours("00", "00", "00", "00");
 

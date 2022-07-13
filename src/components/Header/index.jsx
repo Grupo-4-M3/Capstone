@@ -85,7 +85,7 @@ export function Header({ children, user, type, heigth }) {
             <div>
               <h2>{!!user ? `${user?.name?.split(" ")[0]}` : "User1"}</h2>
 
-              <Button nameButton={"Logout"}></Button>
+              <Button onClick={levarAoHome} nameButton={"Logout"}></Button>
             </div>
           </div>
         </StyledHeader>
