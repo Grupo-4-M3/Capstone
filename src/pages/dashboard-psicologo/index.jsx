@@ -14,14 +14,29 @@ function DashboardPsicologo() {
   const [psicologo, setPsicologo] = useState({});
   const [patients, setPatients] = useState([]);
   const history = useHistory();
+  console.log(usuario);
 
   useEffect(() => {
-    API.get(`/psychologists?userId=${usuario.id}`)
+    usuario?.accessToken ? (
+      usuario.type !== "psicologo" ? (
+        history.push("/dashboard-paciente")
+      ) : (
+        <></>
+      )
+    ) : (
+      history.push("/")
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    API.get(`/psychologists?userId=${usuario?.id}`)
       .then((resp) => {
         setPsicologo(resp.data[0]);
         setPatients(resp.data[0].patients);
       })
       .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const direcionar = (id) => {

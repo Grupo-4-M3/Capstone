@@ -7,6 +7,7 @@ export function List({
   size = "250px",
   sizeY = "60vh",
   minSize = "250px",
+  maxSizeWidth = "none",
 }) {
   return (
     <SectionList
@@ -14,6 +15,7 @@ export function List({
       sizeY={sizeY}
       maxSizeY={maxSizeY}
       minSize={minSize}
+      maxSizeWidth={maxSizeWidth}
     >
       <header>
         <h1>{tituloList || "titulo"}</h1>

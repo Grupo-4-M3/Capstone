@@ -10,10 +10,23 @@ import { Header } from "../../components/Header";
 import { useHistory } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../providers/user";
+import { useEffect } from "react";
 
 function CadastroPaciente() {
   const { usuario } = useContext(UserContext);
 
+  useEffect(()=>{
+    usuario?.accessToken && usuario?.type === "psicologo" && !usuario?.firstLogin
+    ?
+    history.push("/dashboard-psicologo")
+    :
+    usuario?.accessToken && usuario?.type === "paciente" && !usuario?.firstLogin
+    ?
+    history.push("/dashboard-paciente")
+    :
+    <></>
+  })
+ 
   const schema = yup.object().shape({
     name: yup
       .string()
@@ -83,7 +96,8 @@ function CadastroPaciente() {
           psychologist: "",
         },
       ],
-      calendar: [],
+      calendar: {},
+      email: usuario.email,
     };
 
     API.post("/patients", paciente)
