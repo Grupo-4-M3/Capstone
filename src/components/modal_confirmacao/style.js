@@ -1,11 +1,19 @@
-export const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+import { Modal } from "@mui/material";
+import styled from "styled-components";
+
+export const StyledModalConfirm = styled(Modal)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  .buttonDiv {
+    border-radius: 13px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 300px;
+    background-color: #f7ecde;
+  }
+`;

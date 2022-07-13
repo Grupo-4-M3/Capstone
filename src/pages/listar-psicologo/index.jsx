@@ -46,8 +46,6 @@ function ListarPsicologo() {
 
   const { id } = params;
 
-  console.log(usuario);
-
   const callBack = (event, horario) => {
     handleClose();
     setConfirm(true);

@@ -10,20 +10,34 @@ import { useHistory } from "react-router-dom";
 function DashboardPaciente() {
   const [psicologos, setPsicologos] = useState([]);
   const [paciente, setPaciente] = useState([]);
-  
-  useEffect(()=>{
-    usuario?.accessToken
-    ?
-      usuario.type !== "paciente"
-      ?
-      history.push("/dashboard-psicologo")
-      :
-      <></>
-    :
-    history.push("/")
-  },[])
+
+  useEffect(() => {
+    usuario?.accessToken ? (
+      usuario.type !== "paciente" ? (
+        history.push("/dashboard-psicologo")
+      ) : (
+        <></>
+      )
+    ) : (
+      history.push("/")
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const history = useHistory();
+
+  useEffect(() => {
+    usuario?.accessToken ? (
+      usuario.type !== "paciente" ? (
+        history.push("/dashboard-psicologo")
+      ) : (
+        <></>
+      )
+    ) : (
+      history.push("/")
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   let diaAtual = new Date();
   diaAtual.setHours("00", "00", "00", "00");
@@ -71,7 +85,7 @@ function DashboardPaciente() {
                 nome={psico.name}
                 imgPessoa={psico.img}
                 key={psico.id}
-                onClick={() => history.push(`/psicologo/${psico.userId}`)&& console.log(`ok ${psico.userId}`)}
+                onclick={() => history.push(`/psicologo/${psico.userId}`)}
               />
             ))}
           </List>
