@@ -92,7 +92,11 @@ function ModalConfirmation({
             sizeY="50px"
           />
         ) : (
-          <a href={`${evento.link}`} target="_blank" rel="noreferrer">
+          <a
+            href={`${evento.link || newEventState.link}`}
+            target="_blank"
+            rel="noreferrer"
+          >
             <Button
               nameButton="Ir para chamada"
               backcolor="#54BAB9"

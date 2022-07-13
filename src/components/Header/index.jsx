@@ -4,21 +4,25 @@ import { Button } from "./../Button";
 
 export function Header({ children, user, type, heigth }) {
   const historico = useHistory();
-  console.log(user)
+  console.log(user);
 
-  const imagem = ()=>(user?.img === "https://www.attendit.net/images/easyblog_shared/July_2018/7-4-18/totw_network_profile_400.jpg" ? "https://i.imgur.com/BKFDXpT.png" : user?.img)
+  const imagem = () =>
+    user?.img ===
+    "https://www.attendit.net/images/easyblog_shared/July_2018/7-4-18/totw_network_profile_400.jpg"
+      ? "https://i.imgur.com/BKFDXpT.png"
+      : user?.img;
   const levarAoDashboard = () => {
-    historico.push("./dashboard");
+    historico.push("/dashboard");
   };
 
   const levarAoHome = () => {
-    historico.push("./home");
+    historico.push("/home");
   };
   const levarAoLogin = () => {
-    historico.push("./login");
+    historico.push("/login");
   };
   const levarAoRegistro = () => {
-    historico.push("./registro");
+    historico.push("/registro");
   };
 
   switch (type) {
@@ -76,10 +80,7 @@ export function Header({ children, user, type, heigth }) {
           </h1>
           <div>
             <figure>
-              <img
-                src={imagem()}
-                alt=""
-              />
+              <img src={imagem()} alt="" />
             </figure>
             <div>
               <h2>{!!user ? `${user?.name?.split(" ")[0]}` : "User1"}</h2>
