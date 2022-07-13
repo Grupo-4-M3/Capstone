@@ -98,9 +98,7 @@ function DashboardPaciente() {
           <List tituloList={"Meus Horários"} size={"100%"} sizeY={"100px"}>
             {horario.map((hora, index) => (
               <ItemLista
-                dataAgendamento={new Intl.DateTimeFormat("pt-BR").format(
-                  new Date(hora.dia)
-                )}
+                dataAgendamento={hora.dia}
                 onclick={() => {
                   setEvent(hora);
                   setOpen(true);

@@ -7,6 +7,6 @@ export const StyledModal = styled(Modal)`
     justify-content: center;
     align-items: center;
     text-align: center;
-
+ 
 
 `

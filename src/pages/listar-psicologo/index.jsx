@@ -76,10 +76,13 @@ function ListarPsicologo() {
     const { calendar } = pessoa;
     const arrayApoio = [];
     const chaveDia = `dia${data.getTime()}`;
-    if (calendar) {
-      if (chaveDia in calendar) {
-        for (let chave in calendar[chaveDia]) {
-          arrayApoio.push(calendar[chaveDia][chave]);
+    if(calendar){
+
+      if(chaveDia in calendar){
+        for(let chave in calendar[chaveDia]){
+          if(calendar[chaveDia][chave].disponivel){
+            arrayApoio.push(calendar[chaveDia][chave])
+          }
         }
       }
       setHorarios(arrayApoio);

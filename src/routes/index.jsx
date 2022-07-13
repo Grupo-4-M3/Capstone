@@ -33,7 +33,7 @@ function Routes() {
       <Route path="/dashboard-psicologo" exact>
         <DashboardPsicologo />
       </Route>
-      <Route path="/pacidente/:id" exact>
+      <Route path="/paciente/:id" exact>
         <ListarPaciente />
       </Route>
       <Route path="/psicologo/:id" exact>

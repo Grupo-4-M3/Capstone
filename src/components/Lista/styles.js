@@ -5,7 +5,7 @@ export const SectionList = styled.section`
   min-width: ${({ minSize }) => minSize};
   width: ${({ size }) => size};
   min-height: ${({ sizeY }) => sizeY};
-  max-height: ${({ maxSize }) => maxSize};
+  max-height: ${({ maxSizeY }) => maxSizeY};
   background-color: #f7ecde;
 
   max-width: ${({ maxSizeWidth }) => maxSizeWidth};
@@ -17,21 +17,28 @@ export const SectionList = styled.section`
   header {
     border-radius: 8px 8px 0 0;
 
-    background-color: #54bab9;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    h1 {
-      color: white;
-      font-size: 1.6rem;
-      font-weight: 700;
+        background-color: #54BAB9;
+        height: 40px;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5px;
+        h1{
+            color: white;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
     }
-  }
-  ul {
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-  }
+
+    ul{
+        padding: .5rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: .7rem;
+        overflow: auto;
+        max-height: calc(${({maxSizeY})=> maxSizeY} - 4.3rem);
+
+    }
 `;

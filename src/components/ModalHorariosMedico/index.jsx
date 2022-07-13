@@ -1,0 +1,116 @@
+import axios from "axios";
+import { useState,useEffect } from "react";
+import { toast } from "react-toastify";
+import { Agenda } from "../../pages/dashboard-psicologo/styles";
+import API from "../../services/api";
+import { Button } from "../Button";
+import { ItemLista } from "../ItemLista";
+import { List } from "../Lista";
+import { StyledModal } from "../ModalHorario/styles";
+
+
+export const ModalHorariosMedico = ({open,handleClose,dia,psicologo})=>{
+    
+
+    const [disponibilizar,setDisponibilizar] = useState({})
+
+
+    const callBack = (hora) =>{
+        if(hora.hora in disponibilizar){
+            delete disponibilizar[hora.hora]
+            setDisponibilizar({...disponibilizar})
+        }
+        else{
+            disponibilizar[hora.hora] = hora
+            setDisponibilizar({...disponibilizar})
+        }
+    }
+    const [horarios,setHorarios] = useState([]);
+
+    useEffect(() => {
+        const novoDia = Object.keys(dia)[0]
+   
+        const arrayApoio = []
+
+        for(let hora in dia[novoDia]){
+            arrayApoio.push(dia[novoDia][hora])
+        }
+    
+
+        setHorarios(arrayApoio)
+
+    }, [,dia]);
+
+
+    const enviar = () =>{
+        const novoDia = Object.keys(dia)[0]
+        console.log(psicologo.calendar[novoDia])
+        if(novoDia in psicologo.calendar){
+
+                psicologo.calendar[novoDia] = {...psicologo.calendar[novoDia],...disponibilizar}
+
+              
+
+            API.patch(`/psychologists/${psicologo.id}`,{calendar: psicologo.calendar}).then((res)=>{
+
+                // handleClose()
+                // window.location.reload()
+                const resolveAfter = new Promise((resolve) =>
+                    setTimeout(() => {
+                        handleClose()
+                        window.location.reload()
+                        resolve();
+                    }, 3000)
+                    );
+                    toast.promise(resolveAfter, {
+                    pending: "Enviando dados ao sistema...",
+                    success: "Dados enviads com sucesso!",
+                    error: "Falha no Envio de Dados.",
+                    });
+                
+            }).catch(err=>console.log(err)
+                )
+        }
+        else{
+            psicologo.calendar[novoDia] = {...disponibilizar}
+
+            console.log(psicologo.calendar[novoDia])
+
+            API.patch(`/psychologists/${psicologo.id}`,{calendar: psicologo.calendar}).then((res)=>{
+
+                // handleClose()
+                // window.location.reload()
+                const resolveAfter = new Promise((resolve) =>
+                    setTimeout(() => {
+                        handleClose()
+                        window.location.reload()
+                        resolve();
+                    }, 3000)
+                    );
+                    toast.promise(resolveAfter, {
+                    pending: "Enviando dados ao sistema...",
+                    success: "Dados enviads com sucesso!",
+                    error: "Falha no Envio de Dados.",
+                    });
+                }).catch(err=>console.log(err))
+                
+        }
+
+    }
+
+
+    return(
+
+        <StyledModal open={open} onClose={handleClose}>
+            <div>
+            <List maxSizeY="400px" sizeY="auto"  size="80vw" maxSizeWidth={"500px"} tituloList="Horarios">
+                {horarios?.map((hora,index)=>(
+                    <ItemLista key={index} typeCard="horario" horario={hora?.horario} onclick={callBack} hora={hora} />
+                ))}
+            </List>
+                    
+                <Button onclick={enviar} nameButton="Confirmar" sizeY="2.8rem" size="100%" nameSize="1.5rem"/>
+            </div>
+        </StyledModal>
+    )
+}
