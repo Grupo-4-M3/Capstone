@@ -14,7 +14,6 @@ function DashboardPsicologo() {
   const [psicologo, setPsicologo] = useState({});
   const [patients, setPatients] = useState([]);
   const history = useHistory();
-  console.log(usuario);
 
   useEffect(() => {
     usuario?.accessToken ? (
@@ -40,7 +39,6 @@ function DashboardPsicologo() {
   }, []);
 
   const direcionar = (id) => {
-    console.log("clicou");
     return history.push(`/paciente/${id}`);
   };
 
