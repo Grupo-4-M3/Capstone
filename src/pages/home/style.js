@@ -1,43 +1,51 @@
 import styled from "styled-components";
 
-export const StyledHome = styled.div`
-  width: 100%;
-  height: 100vh;
-  text-align: center;
-  max-height: 100vh;
-  overflow-y: hidden;
+export const StyledHome = styled.main`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  background-color: #fbf8f1;
+  width: 100%;
+  min-height: 100vh;
+`;
 
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+export const Box = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 6vh;
+
+  h2 {
+    font-size: clamp(22px, 17px + 5vw, 40px);
+    color: #54bab9;
   }
-  .Imagem {
-    height: calc(100vh-50px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-  }
-  .title {
-    margin: 80px 0 5px 0;
-    h2 {
-      font-size: clamp(22px, 17px + 5vw, 40px);
+  p {
+    margin-bottom: 3vh;
+    color: #448382;
+    span {
       color: #54bab9;
+      cursor: pointer;
     }
   }
-  img {
-    width: 90%;
-    height: calc(width * 0.6528);
-    max-width: 700px;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 90%;
+      max-width: 700px;
+      height: calc(width * 0.6528);
+    }
   }
 `;
+
 export const Rodape = styled.div`
-  height: 45px;
+  min-height: 45px;
+  max-height: 80px;
   background: #54bab9;
   color: #fff;
   position: fixed;
@@ -48,9 +56,25 @@ export const Rodape = styled.div`
   font-size: clamp(8px, 6px + 2vw, 16px);
   justify-content: space-evenly;
   flex-wrap: wrap;
+  gap: 5px;
   align-items: center;
   span {
     display: inline-block;
     text-align: justify;
+  }
+`;
+
+export const StyledModal = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: justify;
+
+  & strong {
+    font-size: 16px !important;
+  }
+
+  & p {
+    font-size: 14px;
   }
 `;

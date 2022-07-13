@@ -25,9 +25,23 @@ function DashboardPsicologo() {
   const handleClose = () => setOpen(false);
 
   const history = useHistory();
+  console.log(usuario);
 
   useEffect(() => {
-    API.get(`/psychologists?userId=${usuario.id}`)
+    usuario?.accessToken ? (
+      usuario.type !== "psicologo" ? (
+        history.push("/dashboard-paciente")
+      ) : (
+        <></>
+      )
+    ) : (
+      history.push("/")
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    API.get(`/psychologists?userId=${usuario?.id}`)
       .then((resp) => {
         console.log(resp.data[0])
         setPsicologo(resp.data[0]);
@@ -77,7 +91,7 @@ function DashboardPsicologo() {
           paciente: {},
           compareceu: true,
           disponivel: true,
-          horario: `${i <10? "0"+i : i}:00 - ${i+1 <10? "0"+(i+1) : i+1}:00`,
+          horario: `${i <10? "0"+i : i}:00 - ${i+1 <10? "0"+(i+1) : i+1}:00`.replace("24:00","00:00"),
           dia: data,
           hora: `hora${i}`
         }
@@ -118,7 +132,7 @@ function DashboardPsicologo() {
       <Header type="dashBoard" user={psicologo} />
       <Box>
         <BoxLista>
-          <List tituloList="Pacientes" size="360px">
+          <List tituloList="Pacientes" size="90vw"  maxSizeWidth="500px">
             {patients.map((paciente) => (
               <ItemLista
                 key={paciente.userId}
@@ -144,7 +158,7 @@ function DashboardPsicologo() {
             </div>
           </Agenda>
 
-          <List className="listinha" tituloList="Agendamentos">
+          <List className="listinha" tituloList="Agendamentos" maxSizeY="300px" sizeY="25vh" size="90%" maxSizeWidth="90%">
             {agendamentos?.map((agendamento,index)=>(
                 <ItemLista key={index} typeCard="agendamento" dataAgendamento={agendamento.dia} nome={agendamento.paciente.name}  horario={agendamento.horario} />
             ))}  

@@ -12,32 +12,43 @@ export const Container = styled.main`
 export const Box = styled.section`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   flex-direction: column;
   width: 100%;
   margin-top: 6vh;
+  gap: 1.8rem;
 
-  @media (min-width: 800px) {
+  @media (min-width: 768px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  @media (min-width: 900px) {
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
+    gap: 3rem;
+  }
+  @media (min-width: 1100px) {
+
+    gap: 8rem;
   }
 `;
 
 export const BoxLista = styled.section`
+
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 90%;
 
-  @media (min-width: 800px) {
-    align-items: baseline;
-    width: 85%;
-  }
+
 `;
 
 export const BoxCont = styled.section`
 
+  box-sizing: border-box;
 
   display: flex;
   flex-direction: column;
@@ -45,11 +56,13 @@ export const BoxCont = styled.section`
   justify-content: space-around;
   gap: 30px;
 
+  max-width: 400px;
+
   &.listinha{
     
     border-radius: 13px 13px 0 0;
     box-shadow: 0 0 0.2rem 0;
-    margin: 6vh 0;
+ 
     width: 90%;
 
     @media (min-width: 400px) {
@@ -65,20 +78,34 @@ export const BoxCont = styled.section`
     width: 50%;
   }
   @media (min-width: 800px) {
-    /* margin: 0 10vh 0 0; */
+
     width: 60%;
   }
   @media (min-width: 1000px) {
     width: 50%;
   }
   @media (min-width: 1200px) {
-    /* margin: 0 15vh 0 0; */
+
     width: 40%;
   }
   }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+  @media (min-width: 900px) {
+    max-width: 236px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+  }
   
   @media (min-width: 1200px) {
-    margin: 0 15vh 0 0;
+
   }
 
 `
@@ -89,6 +116,7 @@ export const Agenda = styled.section`
   box-shadow: 0 0 0.2rem 0;
   /* margin: 6vh 0; */
   width: 90%;
+  max-width: 340px;
 
   header {
     background-color: #54bab9;
@@ -105,7 +133,7 @@ export const Agenda = styled.section`
   div {
     width: 100%;
   }
-
+/* 
   @media (min-width: 400px) {
     width: 80%;
   }
@@ -119,14 +147,12 @@ export const Agenda = styled.section`
     width: 50%;
   }
   @media (min-width: 800px) {
-    margin: 0 10vh 0 0;
     width: 60%;
   }
   @media (min-width: 1000px) {
     width: 50%;
   }
   @media (min-width: 1200px) {
-    /* margin: 0 15vh 0 0; */
     width: 40%;
-  }
+  } */
 `;

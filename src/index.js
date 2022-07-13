@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import Providers from "./providers";
 import { GlobalStyle } from "./styles/global";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,7 +14,9 @@ root.render(
     <GlobalStyle />
     <Providers>
       <BrowserRouter>
-        <App />
+        <GoogleOAuthProvider clientId="745179012303-v7ng0ttg6dil2vng220l0rlq0lv0v5sg.apps.googleusercontent.com">
+          <App />
+        </GoogleOAuthProvider>
       </BrowserRouter>
     </Providers>
   </React.StrictMode>

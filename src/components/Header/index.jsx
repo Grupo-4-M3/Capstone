@@ -1,22 +1,34 @@
 import { useHistory } from "react-router-dom";
 import { StyledHeader } from "./styles";
 import { Button } from "./../Button";
+import { useContext } from "react";
+import { UserContext } from "../../providers/user";
 
 export function Header({ children, user, type, heigth }) {
   const historico = useHistory();
-  const imagem = ()=>(user?.img === "https://www.attendit.net/images/easyblog_shared/July_2018/7-4-18/totw_network_profile_400.jpg" ? "https://i.imgur.com/BKFDXpT.png" : user?.img || "https://i.imgur.com/BKFDXpT.png" )
-  const levarAoDashboard = () => {
-    historico.push("./dashboard");
-  };
+  // console.log(user);
+  const { deslogar } = useContext(UserContext);
 
+  const imagem = () =>
+    user?.img ===
+    "https://www.attendit.net/images/easyblog_shared/July_2018/7-4-18/totw_network_profile_400.jpg"
+      ? "https://i.imgur.com/BKFDXpT.png"
+      : user?.img;
+  const levarAoDashboard = () => {
+    historico.push("/dashboard");
+  };
   const levarAoHome = () => {
-    historico.push("./home");
+    historico.push("/home");
   };
   const levarAoLogin = () => {
-    historico.push("./login");
+    historico.push("/login");
   };
   const levarAoRegistro = () => {
-    historico.push("./registro");
+    historico.push("/registro");
+
+  };
+  const deslogarUsuario = () => {
+    deslogar(historico.push);
   };
 
   switch (type) {
@@ -74,15 +86,11 @@ export function Header({ children, user, type, heigth }) {
           </h1>
           <div>
             <figure>
-              <img
-                src={imagem()}
-                alt=""
-              />
+              <img src={imagem()} alt="" />
             </figure>
             <div>
               <h2>{!!user ? `${user?.name?.split(" ")[0]}` : "User1"}</h2>
-
-              <Button nameButton={"Logout"}></Button>
+              <Button onclick={deslogarUsuario} nameButton={"Logout"}></Button>
             </div>
           </div>
         </StyledHeader>

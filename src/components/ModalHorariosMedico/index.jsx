@@ -12,12 +12,7 @@ import { StyledModal } from "../ModalHorario/styles";
 export const ModalHorariosMedico = ({open,handleClose,dia,psicologo})=>{
     
 
-
-
-
     const [disponibilizar,setDisponibilizar] = useState({})
-
-
 
 
     const callBack = (hora) =>{
@@ -30,7 +25,6 @@ export const ModalHorariosMedico = ({open,handleClose,dia,psicologo})=>{
             setDisponibilizar({...disponibilizar})
         }
     }
-    console.log(disponibilizar)
     const [horarios,setHorarios] = useState([]);
 
     useEffect(() => {
@@ -50,35 +44,33 @@ export const ModalHorariosMedico = ({open,handleClose,dia,psicologo})=>{
 
     const enviar = () =>{
         const novoDia = Object.keys(dia)[0]
+        console.log(psicologo.calendar[novoDia])
         if(novoDia in psicologo.calendar){
 
                 psicologo.calendar[novoDia] = {...psicologo.calendar[novoDia],...disponibilizar}
-                
+
+              
+
             API.patch(`/psychologists/${psicologo.id}`,{calendar: psicologo.calendar}).then((res)=>{
 
                 toast.success("Horários disponibilizados com sucesso!")
                 handleClose()
+                window.location.reload()
             }).catch(err=>console.log(err)
                 )
         }
         else{
             psicologo.calendar[novoDia] = {...disponibilizar}
-            API.patch(`/psychologists/${psicologo.id}`,{calendar: psicologo.calendar}).then((res)=>{
 
+            console.log(psicologo.calendar[novoDia])
+
+            API.patch(`/psychologists/${psicologo.id}`,{calendar: psicologo.calendar}).then((res)=>{
                 toast.success("Horários disponibilizados com sucesso!")
-                handleClose()
-            }).catch(err=>console.log(err)
-                )
+                handleClose()}).catch(err=>console.log(err))
+                window.location.reload()
         }
 
-
-
-
-
-        
     }
-
-    
 
 
     return(

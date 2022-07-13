@@ -48,11 +48,23 @@ export function ItemLista({
             <h2>{horario}</h2>
           </>
         );
-      case "agendamento":
+      case "agendamento ":
         return (
           <div className="agendamento">
             <div className="div_nomePas">
-              <h3>Pas: {nome}</h3>
+              <h3>Pac: {nome}</h3>
+            </div>
+            <div className="div_descData">
+              <p className="dataAgenda">{dataAgendamento}</p>
+              <p className="hora">{horario}</p>
+            </div>
+          </div>
+        );
+      case "agendamentoPaciente":
+        return (
+          <div className="agendamento">
+            <div className="div_nomePas">
+              <h3>Psi: {nome}</h3>
             </div>
             <div className="div_descData">
               <p className="dataAgenda">{formatarData(dataAgendamento)}</p>

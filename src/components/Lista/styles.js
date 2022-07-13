@@ -1,17 +1,21 @@
 import styled from "styled-components";
-
 export const SectionList = styled.section`
-border-radius: 13px;
-box-shadow: 0 0 .2rem 0;
-padding-bottom: 10px;
-width: ${({size})=> size};
-max-width: ${({maxSizeWidth})=> maxSizeWidth};
-min-height: ${({sizeY})=> sizeY};
-max-height: ${({maxSize})=> maxSize};
-background-color: #F7ECDE;
+  border-radius: 13px;
+  box-shadow: 0 0 0.2rem 0;
+  min-width: ${({ minSize }) => minSize};
+  width: ${({ size }) => size};
+  min-height: ${({ sizeY }) => sizeY};
+  max-height: ${({ maxSizeY }) => maxSizeY};
+  background-color: #f7ecde;
 
-    header{
-        border-radius: 8px 8px 0 0;
+  max-width: ${({ maxSizeWidth }) => maxSizeWidth};
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  overflow: auto;
+
+  header {
+    border-radius: 8px 8px 0 0;
 
         background-color: #54BAB9;
         height: 40px;
@@ -34,7 +38,7 @@ background-color: #F7ECDE;
         flex-direction: column;
         gap: .7rem;
         overflow: auto;
-        max-height: calc(${({maxSize})=> maxSize} - 4.3rem);
+        max-height: calc(${({maxSizeY})=> maxSizeY} - 4.3rem);
 
     }
 `;
