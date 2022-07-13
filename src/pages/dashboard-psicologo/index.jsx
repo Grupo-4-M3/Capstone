@@ -52,6 +52,7 @@ function DashboardPsicologo() {
         setPatients(resp.data[0].patients);
       })
       .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
   useEffect(() => {
@@ -108,7 +109,8 @@ function DashboardPsicologo() {
       }
       setHorarios(agendaApoio);
     }
-  }, [, data]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
   useEffect(() => {
     const arrayApoio = [];
@@ -123,6 +125,7 @@ function DashboardPsicologo() {
     }
 
     setAgendamentos(arrayApoio);
+    // eslint-disable-next-line no-sparse-arrays
   }, [, psicologo]);
 
   const direcionar = (id) => {
