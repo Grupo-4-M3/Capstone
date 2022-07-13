@@ -3,7 +3,6 @@ export const SecMain = styled.main`
   background-color: #fbf8f1;
   width: 100%;
   min-height: 100vh;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +10,9 @@ export const SecMain = styled.main`
   .alinhamento {
     background-color: #fbf8f1;
     width: 100%;
+    height: 100vw;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 1.5rem;
   }
@@ -23,12 +25,10 @@ export const SecMain = styled.main`
   .agenda {
     background-color: #fbf8f1;
     width: 90%;
-
     max-width: 350px;
     border-radius: 13px;
     box-shadow: 0 0 0.2rem 0;
     padding-bottom: 1rem;
-
     header {
       background-color: #54bab9;
       color: white;

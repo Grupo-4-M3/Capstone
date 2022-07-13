@@ -14,6 +14,7 @@ function ModalConfirmation({
   evento,
   paciente,
   psicologo,
+  type,
 }) {
   const [newEventState, setNewEventState] = useState({});
   useEffect(() => {
@@ -35,6 +36,19 @@ function ModalConfirmation({
         ...paciente.calendar,
         [`${dia}`]: {
           ...paciente.calendar[`${dia}`],
+          [`hora${evento.horario.split(":")[0]}`]: {
+            ...newEvent,
+            disponivel: true,
+          },
+        },
+      },
+    };
+
+    const newPsicologo = {
+      calendar: {
+        ...psicologo.calendar,
+        [`${dia}`]: {
+          ...psicologo.calendar[`${dia}`],
           [`hora${evento.horario.split(":")[0]}`]: newEvent,
         },
       },
@@ -43,7 +57,7 @@ function ModalConfirmation({
     API.patch(`/patients/${paciente.id}`, newPaciente)
       .then((res) => setNewEventState(newEvent))
       .catch((erro) => console.log(erro));
-    API.patch(`/psychologists/${psicologo.id}`, newPaciente).catch((erro) =>
+    API.patch(`/psychologists/${psicologo.id}`, newPsicologo).catch((erro) =>
       console.log(erro)
     );
   };
@@ -83,7 +97,8 @@ function ModalConfirmation({
   return (
     <StyledModalConfirm open={open} onClose={() => setOpen(false)}>
       <div className="buttonDiv">
-        {newEventState.disponivel ? (
+        {(newEventState.disponivel || evento.disponivel) &&
+        type !== "dashboard" ? (
           <Button
             onclick={login}
             nameButton="Confirmar"
