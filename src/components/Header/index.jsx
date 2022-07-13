@@ -1,10 +1,13 @@
 import { useHistory } from "react-router-dom";
 import { StyledHeader } from "./styles";
 import { Button } from "./../Button";
+import { useContext } from "react";
+import { UserContext } from "../../providers/user";
 
 export function Header({ children, user, type, heigth }) {
   const historico = useHistory();
-  console.log(user);
+  // console.log(user);
+  const { deslogar } = useContext(UserContext);
 
   const imagem = () =>
     user?.img ===
@@ -12,17 +15,19 @@ export function Header({ children, user, type, heigth }) {
       ? "https://i.imgur.com/BKFDXpT.png"
       : user?.img;
   const levarAoDashboard = () => {
-    historico.push("./dashboard");
+    historico.push("/dashboard");
   };
-
   const levarAoHome = () => {
-    historico.push("./home");
+    historico.push("/home");
   };
   const levarAoLogin = () => {
-    historico.push("./login");
+    historico.push("/login");
   };
   const levarAoRegistro = () => {
-    historico.push("./registro");
+    historico.push("/registro");
+  };
+  const deslogarUsuario = () => {
+    deslogar(historico.push);
   };
 
   switch (type) {
@@ -84,8 +89,7 @@ export function Header({ children, user, type, heigth }) {
             </figure>
             <div>
               <h2>{!!user ? `${user?.name?.split(" ")[0]}` : "User1"}</h2>
-
-              <Button onClick={levarAoHome} nameButton={"Logout"}></Button>
+              <Button onclick={deslogarUsuario} nameButton={"Logout"}></Button>
             </div>
           </div>
         </StyledHeader>

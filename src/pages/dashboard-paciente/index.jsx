@@ -71,7 +71,7 @@ function DashboardPaciente() {
                 nome={psico.name}
                 imgPessoa={psico.img}
                 key={psico.id}
-                onClick={() => history.push(`/psicologo/${psico.userId}`)}
+                onclick={() => history.push(`/psicologo/${psico.userId}`)}
               />
             ))}
           </List>
