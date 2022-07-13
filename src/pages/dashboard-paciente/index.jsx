@@ -64,6 +64,7 @@ function DashboardPaciente() {
   const [horario, setHorario] = useState([]);
   let horas = [];
   const { usuario } = useContext(UserContext);
+  
   function buscaHorario() {
     for (var prop in paciente.calendar) {
       if (parseInt(prop.replace("dia", "")) >= diaAtual.getTime()) {

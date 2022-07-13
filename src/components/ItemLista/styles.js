@@ -14,27 +14,27 @@ background-color: #E9DAC1;
   align-items: center;
   gap: 0.3rem;
   
-&.brilho{
+  &.brilho{
     filter: brightness(80%);
-}
+  }
     .div_img{
-        padding: .3rem;
+      padding: .3rem;
       width: 55px;
       min-height: 3rem;
 
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
 
-    img {
-      background-color: #448382;
-      overflow: hidden;
+      img {
+        background-color: #448382;
+        overflow: hidden;
 
-      border-radius: 500px;
-      height: 55px;
-      width: 55px;
+        border-radius: 500px;
+        height: 55px;
+        width: 55px;
+      }
     }
-  }
 
   .div_infos {
     width: 78%;

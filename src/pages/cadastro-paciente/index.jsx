@@ -103,7 +103,7 @@ function CadastroPaciente() {
     API.post("/patients", paciente)
       .then((_) => {
         API.patch(`/users/${userId}`, { firstLogin: false })
-          .then((response) => console.log("usuario: ", response.data))
+          .then((response) => response)
           .catch((err) => console.error(err));
       })
       .then((_) => {
