@@ -25,6 +25,7 @@ export function Header({ children, user, type, heigth }) {
   };
   const levarAoRegistro = () => {
     historico.push("/registro");
+
   };
   const deslogarUsuario = () => {
     deslogar(historico.push);

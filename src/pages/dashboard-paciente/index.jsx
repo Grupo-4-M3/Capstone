@@ -10,6 +10,20 @@ import { useHistory } from "react-router-dom";
 function DashboardPaciente() {
   const [psicologos, setPsicologos] = useState([]);
   const [paciente, setPaciente] = useState([]);
+
+  useEffect(() => {
+    usuario?.accessToken ? (
+      usuario.type !== "paciente" ? (
+        history.push("/dashboard-psicologo")
+      ) : (
+        <></>
+      )
+    ) : (
+      history.push("/")
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const history = useHistory();
 
   useEffect(() => {
