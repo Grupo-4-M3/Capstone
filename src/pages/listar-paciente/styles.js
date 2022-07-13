@@ -5,14 +5,7 @@ export const SecMain = styled.main`
     box-sizing: border-box;
 }
 
-header{
-    img{
-        width: 3rem;
-    }
-}
-
 background-color:  #FBF8F1;
-
 
 width: 100%;
 min-height: 100vh;
@@ -25,7 +18,6 @@ gap: 1.5rem;
     .alinhamento{
 
         background-color:  #FBF8F1;
-
 
         width: 100%;
 

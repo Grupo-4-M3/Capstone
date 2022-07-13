@@ -1,7 +1,6 @@
-import axios from "axios";
+
 import { useState,useEffect } from "react";
 import { toast } from "react-toastify";
-import { Agenda } from "../../pages/dashboard-psicologo/styles";
 import API from "../../services/api";
 import { Button } from "../Button";
 import { ItemLista } from "../ItemLista";
@@ -44,7 +43,7 @@ export const ModalHorariosMedico = ({open,handleClose,dia,psicologo})=>{
 
     const enviar = () =>{
         const novoDia = Object.keys(dia)[0]
-        console.log(psicologo.calendar[novoDia])
+
         if(novoDia in psicologo.calendar){
 
                 psicologo.calendar[novoDia] = {...psicologo.calendar[novoDia],...disponibilizar}
@@ -53,8 +52,6 @@ export const ModalHorariosMedico = ({open,handleClose,dia,psicologo})=>{
 
             API.patch(`/psychologists/${psicologo.id}`,{calendar: psicologo.calendar}).then((res)=>{
 
-                // handleClose()
-                // window.location.reload()
                 const resolveAfter = new Promise((resolve) =>
                     setTimeout(() => {
                         handleClose()
@@ -74,12 +71,8 @@ export const ModalHorariosMedico = ({open,handleClose,dia,psicologo})=>{
         else{
             psicologo.calendar[novoDia] = {...disponibilizar}
 
-            console.log(psicologo.calendar[novoDia])
-
             API.patch(`/psychologists/${psicologo.id}`,{calendar: psicologo.calendar}).then((res)=>{
 
-                // handleClose()
-                // window.location.reload()
                 const resolveAfter = new Promise((resolve) =>
                     setTimeout(() => {
                         handleClose()

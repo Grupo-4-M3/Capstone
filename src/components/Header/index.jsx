@@ -6,7 +6,6 @@ import { UserContext } from "../../providers/user";
 
 export function Header({ children, user, type, heigth }) {
   const historico = useHistory();
-  // console.log(user);
   const { deslogar } = useContext(UserContext);
 
   const imagem = () =>

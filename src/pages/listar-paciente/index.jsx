@@ -71,7 +71,6 @@ function ListarPaciente() {
     const novoArray = [...pessoa.medical_records,data]
 
     atualizaProntuario({medical_records: novoArray})
-    console.log(novoArray);
   }
 
   function atualizaProntuario(data){
@@ -79,7 +78,6 @@ function ListarPaciente() {
     API.patch(`/patients/${pessoa.id}`,data)
     .then(resp => {
       setPessoa(resp.data)
-      console.log(resp);
     })
     .catch(err => err)
   }
