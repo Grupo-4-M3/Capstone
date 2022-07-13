@@ -62,6 +62,17 @@ function ModalConfirmation({
     );
   };
 
+  const formatDate = () => {
+    const data = new Date(parseInt(dia.replace("dia", "")));
+    const ano = data.getUTCFullYear();
+    const mes = data.getMonth();
+    const newDia = data.getUTCDate();
+
+    return `${ano}-${mes < 10 ? "0" + (mes + 1) : mes + 1}-${
+      newDia < 10 ? "0" + newDia : newDia
+    }`;
+  };
+
   const googleResponse = (res) => {
     const { code } = res;
     axios
@@ -72,8 +83,8 @@ function ModalConfirmation({
             summary: `Consulta de ${paciente?.name} com ${psicologo?.name}`,
             description: `Queixas do paciente: ${paciente?.complaint}`,
             location: "Online",
-            startDateTime: "2022-07-12T14:30",
-            endDateTime: "2022-07-12T14:40",
+            startDateTime: `${formatDate()}T${evento.horario.split(" - ")[0]}`,
+            endDateTime: `${formatDate()}T${evento.horario.split(" - ")[1]}`,
             attendees: [{ email: paciente.email }, { email: psicologo.email }],
           })
           .then((res) => {
