@@ -1,10 +1,13 @@
 import { useHistory } from "react-router-dom";
 import { StyledHeader } from "./styles";
 import { Button } from "./../Button";
+import { useContext } from "react";
+import { UserContext } from "../../providers/user";
 
 export function Header({ children, user, type, heigth }) {
   const historico = useHistory();
-  console.log(user);
+  // console.log(user);
+  const { deslogar } = useContext(UserContext);
 
   const imagem = () =>
     user?.img ===
@@ -14,7 +17,6 @@ export function Header({ children, user, type, heigth }) {
   const levarAoDashboard = () => {
     historico.push("/dashboard");
   };
-
   const levarAoHome = () => {
     historico.push("/home");
   };
@@ -23,6 +25,10 @@ export function Header({ children, user, type, heigth }) {
   };
   const levarAoRegistro = () => {
     historico.push("/registro");
+
+  };
+  const deslogarUsuario = () => {
+    deslogar(historico.push);
   };
 
   switch (type) {
@@ -84,8 +90,7 @@ export function Header({ children, user, type, heigth }) {
             </figure>
             <div>
               <h2>{!!user ? `${user?.name?.split(" ")[0]}` : "User1"}</h2>
-
-              <Button onClick={levarAoHome} nameButton={"Logout"}></Button>
+              <Button onclick={deslogarUsuario} nameButton={"Logout"}></Button>
             </div>
           </div>
         </StyledHeader>
