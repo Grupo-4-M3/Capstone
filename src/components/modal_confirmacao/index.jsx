@@ -76,17 +76,28 @@ function ModalConfirmation({
   const googleResponse = (res) => {
     const { code } = res;
     axios
-      .post("http://localhost:4000/api/create-tokens", { code })
+      .post(
+        "https://google-calendar-api-calmmind.herokuapp.com/api/create-tokens",
+        { code }
+      )
       .then((res) => {
         axios
-          .post("http://localhost:4000/api/create-event", {
-            summary: `Consulta de ${paciente?.name} com ${psicologo?.name}`,
-            description: `Queixas do paciente: ${paciente?.complaint}`,
-            location: "Online",
-            startDateTime: `${formatDate()}T${evento.horario.split(" - ")[0]}`,
-            endDateTime: `${formatDate()}T${evento.horario.split(" - ")[1]}`,
-            attendees: [{ email: paciente.email }, { email: psicologo.email }],
-          })
+          .post(
+            "https://google-calendar-api-calmmind.herokuapp.com/api/create-event",
+            {
+              summary: `Consulta de ${paciente?.name} com ${psicologo?.name}`,
+              description: `Queixas do paciente: ${paciente?.complaint}`,
+              location: "Online",
+              startDateTime: `${formatDate()}T${
+                evento.horario.split(" - ")[0]
+              }`,
+              endDateTime: `${formatDate()}T${evento.horario.split(" - ")[1]}`,
+              attendees: [
+                { email: paciente.email },
+                { email: psicologo.email },
+              ],
+            }
+          )
           .then((res) => {
             toast.success("Evento Agendado com sucesso!");
             updateCalendars(res);
