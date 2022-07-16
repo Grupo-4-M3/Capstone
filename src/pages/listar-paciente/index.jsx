@@ -9,34 +9,31 @@ import { UserContext } from "../../providers/user";
 import { Button } from "../../components/Button";
 
 import { useForm } from "react-hook-form";
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 function ListarPaciente() {
-
   const schema = yup.object().shape({
-    description: yup.string().required()
-  })
+    description: yup.string().required(),
+  });
 
   const { register, handleSubmit } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-      resolver: yupResolver(schema)
-  })
+  const history = useHistory();
 
-  const history = useHistory()
-  
-  useEffect(()=>{
-    usuario?.accessToken
-    ?
-      usuario.type !== "psicologo"
-      ?
-      history.push("/dashboard-paciente")
-      :
-      <></>
-    :
-    history.push("/")
-  },[])
+  useEffect(() => {
+    usuario?.accessToken ? (
+      usuario.type !== "psicologo" ? (
+        history.push("/dashboard-paciente")
+      ) : (
+        <></>
+      )
+    ) : (
+      history.push("/")
+    );
+  }, []);
 
   const { usuario } = useContext(UserContext);
 
@@ -47,7 +44,7 @@ function ListarPaciente() {
   const { id } = params;
 
   useEffect(() => {
-      API.get(`/patients?userId=${id}`)
+    API.get(`/patients?userId=${id}`)
       .then((resp) => setPessoa(resp.data[0]))
       .catch((err) => console.log(err));
   }, []);
@@ -59,27 +56,28 @@ function ListarPaciente() {
   }, []);
 
   const data = new Date();
-  const dia = String(data.getDate()).padStart(2, '0');
-  const mes = String(data.getMonth() + 1).padStart(2, '0');
+  const dia = String(data.getDate()).padStart(2, "0");
+  const mes = String(data.getMonth() + 1).padStart(2, "0");
   const ano = data.getFullYear();
-  const dataAtual = dia + '/' + mes + '/' + ano;
+  const dataAtual = dia + "/" + mes + "/" + ano;
 
-  const formSchema = (data)=> {
-    data.date = dataAtual
-    data.psychologist = psicologo.name
+  const formSchema = (data) => {
+    data.date = dataAtual;
+    data.psychologist = psicologo.name;
 
-    const novoArray = [...pessoa.medical_records,data]
+    const novoArray = [...pessoa.medical_records, data];
 
-    atualizaProntuario({medical_records: novoArray})
-  }
 
-  function atualizaProntuario(data){
+    atualizaProntuario({ medical_records: novoArray });
+  };
 
-    API.patch(`/patients/${pessoa.id}`,data)
-    .then(resp => {
-      setPessoa(resp.data)
-    })
-    .catch(err => err)
+
+  function atualizaProntuario(data) {
+    API.patch(`/patients/${pessoa.id}`, data)
+      .then((resp) => {
+        setPessoa(resp.data);
+      })
+      .catch((err) => err);
   }
 
   return (
@@ -87,16 +85,31 @@ function ListarPaciente() {
       <Header type={"dashBoard"} user={psicologo} />
       <section className="alinhamento">
         <article className="container">
-          <Card type={"paciente"} pessoa={pessoa} maxSizeY="78vh" maxSizeX={"570px"} />
+          <Card
+            type={"paciente"}
+            pessoa={pessoa}
+            maxSizeY="78vh"
+            maxSizeX={"570px"}
+          />
         </article>
         <article className="agenda">
           <header>
             <h3>Prontuario</h3>
           </header>
           <form onSubmit={handleSubmit(formSchema)} className="formText">
-            <textarea name="prontuario" cols="30" rows="10" 
-            placeholder="Descrição do atendimento..." {...register('description')}></textarea>
-            <Button type={"submit"} nameButton={"Aturalizar"} size="60%" sizeY="2.2rem"/>
+            <textarea
+              name="prontuario"
+              cols="30"
+              rows="10"
+              placeholder="Descrição do atendimento..."
+              {...register("description")}
+            ></textarea>
+            <Button
+              type={"submit"}
+              nameButton={"Aturalizar"}
+              size="60%"
+              sizeY="2.2rem"
+            />
           </form>
         </article>
       </section>

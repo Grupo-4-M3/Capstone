@@ -140,7 +140,7 @@ function DashboardPsicologo() {
       <Header type="dashBoard" user={psicologo} />
       <Box>
         <BoxLista>
-          <List tituloList="Pacientes" size="90vw" maxSizeWidth="500px">
+          <List tituloList="Pacientes" size="97%" maxSizeWidth="800px">
             {patients.map((paciente) => (
               <ItemLista
                 key={paciente.userId}
