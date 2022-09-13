@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export const ItemList = styled.li`
-cursor: pointer;
-border-radius: 13px;
-background-color: #E9DAC1;
-  min-height: 2.5rem;
-  max-height: 6.8rem;
+  cursor: pointer;
+  border-radius: 13px;
+  background-color: #e9dac1;
+  min-height: 4rem;
+  height: 5rem;
+  max-height: 7rem;
   padding: 0.3rem;
 
   display: flex;
@@ -13,28 +14,28 @@ background-color: #E9DAC1;
     typeCard === "horario" ? "center" : "space-between"};
   align-items: center;
   gap: 0.3rem;
-  
-  &.brilho{
+
+  &.brilho {
     filter: brightness(80%);
   }
-    .div_img{
-      padding: .3rem;
+  .div_img {
+    padding: 0.3rem;
+    width: 55px;
+    min-height: 3rem;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    img {
+      background-color: #448382;
+      overflow: hidden;
+
+      border-radius: 500px;
+      height: 55px;
       width: 55px;
-      min-height: 3rem;
-
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-
-      img {
-        background-color: #448382;
-        overflow: hidden;
-
-        border-radius: 500px;
-        height: 55px;
-        width: 55px;
-      }
     }
+  }
 
   .div_infos {
     width: 78%;

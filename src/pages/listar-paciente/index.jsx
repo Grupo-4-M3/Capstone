@@ -47,12 +47,14 @@ function ListarPaciente() {
     API.get(`/patients?userId=${id}`)
       .then((resp) => setPessoa(resp.data[0]))
       .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     API.get(`/psychologists?userId=${usuario?.id}`)
       .then((resp) => setPsicologo(resp.data[0]))
       .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const data = new Date();
@@ -67,10 +69,8 @@ function ListarPaciente() {
 
     const novoArray = [...pessoa.medical_records, data];
 
-
     atualizaProntuario({ medical_records: novoArray });
   };
-
 
   function atualizaProntuario(data) {
     API.patch(`/patients/${pessoa.id}`, data)

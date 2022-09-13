@@ -15,18 +15,20 @@ import { useEffect } from "react";
 function CadastroPaciente() {
   const { usuario } = useContext(UserContext);
 
-  useEffect(()=>{
-    usuario?.accessToken && usuario?.type === "psicologo" && !usuario?.firstLogin
-    ?
-    history.push("/dashboard-psicologo")
-    :
-    usuario?.accessToken && usuario?.type === "paciente" && !usuario?.firstLogin
-    ?
-    history.push("/dashboard-paciente")
-    :
-    <></>
-  })
- 
+  useEffect(() => {
+    usuario?.accessToken &&
+    usuario?.type === "psicologo" &&
+    !usuario?.firstLogin ? (
+      history.push("/dashboard-psicologo")
+    ) : usuario?.accessToken &&
+      usuario?.type === "paciente" &&
+      !usuario?.firstLogin ? (
+      history.push("/dashboard-paciente")
+    ) : (
+      <></>
+    );
+  });
+
   const schema = yup.object().shape({
     name: yup
       .string()
@@ -124,118 +126,140 @@ function CadastroPaciente() {
           onSubmitFunction={handleSubmit(submeter)}
           inputSize="7vh"
         >
-          <label>
-            Nome Completo: *{" "}
-            {errors.name?.message && <Errors> - {errors.name?.message}</Errors>}
-          </label>
-          <input
-            type="text"
-            placeholder="Digite seu nome completo aqui..."
-            {...register("name")}
-          />
-          <label>
-            Idade: *{" "}
-            {errors.age?.message && <Errors> - {errors.age?.message}</Errors>}
-          </label>
-          <input
-            type="text"
-            placeholder="Digite sua idade aqui..."
-            {...register("age")}
-          />
-          <label>
-            Imagem de perfil: *{" "}
-            {errors.img?.message && <Errors> - {errors.img?.message}</Errors>}
-          </label>
-          <input
-            type="text"
-            placeholder="Insira a url da imagem aqui..."
-            {...register("img")}
-          />
-          <label>
-            Estado Civil:{" "}
-            {errors.status?.message && (
-              <Errors> - {errors.status?.message}</Errors>
-            )}
-          </label>
-          <select {...register("status")}>
-            <option value="solteiro(a)">Solteiro(a)</option>
-            <option value="casado(a)">Casado(a)</option>
-            <option value="divorciado(a)">Divorciado(a)</option>
-            <option value="viuvo(a)">Viúvo(a)</option>
-          </select>
-          <label>
-            Escolaridade:{" "}
-            {errors.schooling?.message && (
-              <Errors> - {errors.schooling?.message}</Errors>
-            )}
-          </label>
-          <select {...register("schooling")}>
-            <option value="ensino-fundamental-inconpleto">
-              Ensino Fundamental Incompleto
-            </option>
-            <option value="ensino-fundamental-completo">
-              Ensino Fundamental Completo
-            </option>
-            <option value="ensino-medio-incompleto">
-              Ensino Médio Incompleto
-            </option>
-            <option value="ensino-medio-completo">Ensino Médio Completo</option>
-            <option value="curso-tecnico">Curso Técnico</option>
-            <option value="ensino-superior-incompleto">
-              Ensino Superior Incompleto
-            </option>
-            <option value="ensino-superior-completo">
-              Ensino Superior Completo
-            </option>
-            <option value="pos-graduacao">Pós Graduação</option>
-            <option value="mba">MBA</option>
-            <option value="mestrado">Mestrado</option>
-            <option value="doutorado">Doutorado</option>
-          </select>
-          <label>
-            Profissão: *{" "}
-            {errors.profession?.message && (
-              <Errors> - {errors.profession?.message}</Errors>
-            )}
-          </label>
-          <input
-            type="text"
-            placeholder="Digite sua profissão aqui..."
-            {...register("profession")}
-          />
-          <label>
-            Queixas Principais: *{" "}
-            {errors.complaint?.message && (
-              <Errors> - {errors.complaint?.message}</Errors>
-            )}
-          </label>
-          <input
-            type="text"
-            placeholder="Digite o que você sente aqui..."
-            {...register("complaint")}
-          />
-          <label>
-            Faz uso de Medicação? Se sim, registre aqui:{" "}
-            {errors.medication?.message && (
-              <Errors> - {errors.medication?.message}</Errors>
-            )}
-          </label>
-          <input
-            type="text"
-            placeholder="Digite o nome da medicação aqui..."
-            {...register("medication")}
-          />
-          <label>
-            Possui alguma doença? Se sim, registre aqui:{" "}
-            {errors.disease?.message && (
-              <Errors> - {errors.disease?.message}</Errors>
-            )}
-          </label>
-          <input
-            type="text"
-            placeholder="Digite o nome da doença aqui..."
-            {...register("disease")}
-          />
+          <div>
+            <label>
+              Nome Completo: *{" "}
+              {errors.name?.message && (
+                <Errors> - {errors.name?.message}</Errors>
+              )}
+            </label>
+            <input
+              type="text"
+              placeholder="Digite seu nome completo aqui..."
+              {...register("name")}
+            />
+          </div>
+          <div>
+            <label>
+              Idade: *{" "}
+              {errors.age?.message && <Errors> - {errors.age?.message}</Errors>}
+            </label>
+            <input
+              type="text"
+              placeholder="Digite sua idade aqui..."
+              {...register("age")}
+            />
+          </div>
+          <div>
+            <label>
+              Imagem de perfil: *{" "}
+              {errors.img?.message && <Errors> - {errors.img?.message}</Errors>}
+            </label>
+            <input
+              type="text"
+              placeholder="Insira a url da imagem aqui..."
+              {...register("img")}
+            />
+          </div>
+          <div>
+            <label>
+              Estado Civil:{" "}
+              {errors.status?.message && (
+                <Errors> - {errors.status?.message}</Errors>
+              )}
+            </label>
+            <select {...register("status")}>
+              <option value="solteiro(a)">Solteiro(a)</option>
+              <option value="casado(a)">Casado(a)</option>
+              <option value="divorciado(a)">Divorciado(a)</option>
+              <option value="viuvo(a)">Viúvo(a)</option>
+            </select>
+          </div>
+          <div>
+            <label>
+              Escolaridade:{" "}
+              {errors.schooling?.message && (
+                <Errors> - {errors.schooling?.message}</Errors>
+              )}
+            </label>
+            <select {...register("schooling")}>
+              <option value="ensino-fundamental-inconpleto">
+                Ensino Fundamental Incompleto
+              </option>
+              <option value="ensino-fundamental-completo">
+                Ensino Fundamental Completo
+              </option>
+              <option value="ensino-medio-incompleto">
+                Ensino Médio Incompleto
+              </option>
+              <option value="ensino-medio-completo">
+                Ensino Médio Completo
+              </option>
+              <option value="curso-tecnico">Curso Técnico</option>
+              <option value="ensino-superior-incompleto">
+                Ensino Superior Incompleto
+              </option>
+              <option value="ensino-superior-completo">
+                Ensino Superior Completo
+              </option>
+              <option value="pos-graduacao">Pós Graduação</option>
+              <option value="mba">MBA</option>
+              <option value="mestrado">Mestrado</option>
+              <option value="doutorado">Doutorado</option>
+            </select>
+          </div>
+          <div>
+            <label>
+              Profissão: *{" "}
+              {errors.profession?.message && (
+                <Errors> - {errors.profession?.message}</Errors>
+              )}
+            </label>
+            <input
+              type="text"
+              placeholder="Digite sua profissão aqui..."
+              {...register("profession")}
+            />
+          </div>
+          <div>
+            <label>
+              Queixas Principais: *{" "}
+              {errors.complaint?.message && (
+                <Errors> - {errors.complaint?.message}</Errors>
+              )}
+            </label>
+            <input
+              type="text"
+              placeholder="Digite o que você sente aqui..."
+              {...register("complaint")}
+            />
+          </div>
+          <div>
+            <label>
+              Faz uso de Medicação? Se sim, registre aqui:{" "}
+              {errors.medication?.message && (
+                <Errors> - {errors.medication?.message}</Errors>
+              )}
+            </label>
+            <input
+              type="text"
+              placeholder="Digite o nome da medicação aqui..."
+              {...register("medication")}
+            />
+          </div>
+          <div>
+            <label>
+              Possui alguma doença? Se sim, registre aqui:{" "}
+              {errors.disease?.message && (
+                <Errors> - {errors.disease?.message}</Errors>
+              )}
+            </label>
+            <input
+              type="text"
+              placeholder="Digite o nome da doença aqui..."
+              {...register("disease")}
+            />
+          </div>
           <Button
             type="submit"
             size="100%"

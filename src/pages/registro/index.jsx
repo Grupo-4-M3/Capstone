@@ -15,20 +15,18 @@ import { UserContext } from "../../providers/user";
 function Registro() {
   const [type, setType] = useState("paciente");
 
-  const {usuario} = useContext(UserContext)
+  const { usuario } = useContext(UserContext);
 
-  useEffect(()=>{
-    usuario?.accessToken && usuario?.type === "psicologo"
-    ?
-    history.push("/dashboard-psicologo")
-    :
-    usuario?.accessToken && usuario?.type === "paciente"
-    ?
-    history.push("/dashboard-paciente")
-    :
-    <></>
-  })
- 
+  useEffect(() => {
+    usuario?.accessToken && usuario?.type === "psicologo" ? (
+      history.push("/dashboard-psicologo")
+    ) : usuario?.accessToken && usuario?.type === "paciente" ? (
+      history.push("/dashboard-paciente")
+    ) : (
+      <></>
+    );
+  });
+
   const schema = yup.object().shape({
     name: yup
       .string()
@@ -104,62 +102,76 @@ function Registro() {
           onSubmitFunction={handleSubmit(cadastrar)}
           inputSize="7vh"
         >
-          <label>
-            Nome:{" "}
-            {errors.name?.message && <Errors> - {errors.name?.message}</Errors>}
-          </label>
-          <input placeholder="Digite seu nome aqui..." {...register("name")} />
-
-          <label>
-            Email:{" "}
-            {errors.email?.message && (
-              <Errors> - {errors.email?.message}</Errors>
-            )}
-          </label>
-          <input
-            placeholder="Digite seu email aqui..."
-            {...register("email")}
-          />
-          <label>
-            Senha:{" "}
-            {errors.password?.message && (
-              <Errors> - {errors.password?.message}</Errors>
-            )}
-          </label>
-          <input
-            type="password"
-            placeholder="Digite sua senha aqui..."
-            {...register("password")}
-          />
-          <label>
-            Confirmar Senha:{" "}
-            {errors.confirmPassword?.message && (
-              <Errors> - {errors.confirmPassword?.message}</Errors>
-            )}
-          </label>
-          <input
-            type="password"
-            placeholder="Confirme sua senha..."
-            {...register("confirmPassword")}
-          />
-          <label>Acessar como:</label>
-          <select {...register("type")}>
-            <option value="paciente">Paciente</option>
-            <option value="psicologo">Psicólogo</option>
-          </select>
-          {watchType === "psicologo" && (
+          <div>
             <label>
-              Registro Profissional:{" "}
-              {errors.registration?.message && (
-                <Errors> - {errors.registration?.message}</Errors>
+              Nome:{" "}
+              {errors.name?.message && (
+                <Errors> - {errors.name?.message}</Errors>
               )}
             </label>
-          )}
-          {watchType === "psicologo" && (
             <input
-              placeholder="Digite aqui seu número de registro profissional..."
-              {...register("registration")}
+              placeholder="Digite seu nome aqui..."
+              {...register("name")}
             />
+          </div>
+          <div>
+            <label>
+              Email:{" "}
+              {errors.email?.message && (
+                <Errors> - {errors.email?.message}</Errors>
+              )}
+            </label>
+            <input
+              placeholder="Digite seu email aqui..."
+              {...register("email")}
+            />
+          </div>
+          <div>
+            <label>
+              Senha:{" "}
+              {errors.password?.message && (
+                <Errors> - {errors.password?.message}</Errors>
+              )}
+            </label>
+            <input
+              type="password"
+              placeholder="Digite sua senha aqui..."
+              {...register("password")}
+            />
+          </div>
+          <div>
+            <label>
+              Confirmar Senha:{" "}
+              {errors.confirmPassword?.message && (
+                <Errors> - {errors.confirmPassword?.message}</Errors>
+              )}
+            </label>
+            <input
+              type="password"
+              placeholder="Confirme sua senha..."
+              {...register("confirmPassword")}
+            />
+          </div>
+          <div>
+            <label>Acessar como:</label>
+            <select {...register("type")}>
+              <option value="paciente">Paciente</option>
+              <option value="psicologo">Psicólogo</option>
+            </select>
+          </div>
+          {watchType === "psicologo" && (
+            <div>
+              <label>
+                Registro Profissional:{" "}
+                {errors.registration?.message && (
+                  <Errors> - {errors.registration?.message}</Errors>
+                )}
+              </label>
+              <input
+                placeholder="Digite aqui seu número de registro profissional..."
+                {...register("registration")}
+              />
+            </div>
           )}
           <Button
             type="submit"
