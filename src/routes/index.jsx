@@ -3,6 +3,7 @@ import CadastroPaciente from "../pages/cadastro-paciente";
 import CadastroPsicologo from "../pages/cadastro-psicologo";
 import DashboardPaciente from "../pages/dashboard-paciente";
 import DashboardPsicologo from "../pages/dashboard-psicologo";
+import ValidateEmail from "../pages/validate-email";
 import Home from "../pages/home";
 import ListarPaciente from "../pages/listar-paciente";
 import ListarPsicologo from "../pages/listar-psicologo";
@@ -38,6 +39,9 @@ function Routes() {
       </Route>
       <Route path="/psicologo/:id" exact>
         <ListarPsicologo />
+      </Route>
+      <Route path="/validate/:token" exact>
+        <ValidateEmail />
       </Route>
       <Route path="/">
         <Home />

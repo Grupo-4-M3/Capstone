@@ -179,7 +179,11 @@ function DashboardPsicologo() {
                 key={index}
                 typeCard="agendamento"
                 dataAgendamento={agendamento.dia}
-                nome={agendamento.paciente.name}
+                nome={
+                  agendamento.paciente.name.split(" ")[0] +
+                  " " +
+                  agendamento.paciente.name.split(" ")[1]
+                }
                 horario={agendamento.horario}
                 onclick={() => {
                   setEvent(agendamento);

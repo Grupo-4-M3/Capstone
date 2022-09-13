@@ -15,18 +15,20 @@ import { useEffect } from "react";
 function CadastroPsicologo() {
   const { usuario } = useContext(UserContext);
 
-  useEffect(()=>{
-    usuario?.accessToken && usuario?.type === "psicologo" && !usuario?.firstLogin
-    ?
-    history.push("/dashboard-psicologo")
-    :
-    usuario?.accessToken && usuario?.type === "paciente" && !usuario?.firstLogin
-    ?
-    history.push("/dashboard-paciente")
-    :
-    <></>
-  })
- 
+  useEffect(() => {
+    usuario?.accessToken &&
+    usuario?.type === "psicologo" &&
+    !usuario?.firstLogin ? (
+      history.push("/dashboard-psicologo")
+    ) : usuario?.accessToken &&
+      usuario?.type === "paciente" &&
+      !usuario?.firstLogin ? (
+      history.push("/dashboard-paciente")
+    ) : (
+      <></>
+    );
+  });
+
   const schema = yup.object().shape({
     name: yup
       .string()
@@ -100,77 +102,91 @@ function CadastroPsicologo() {
           onSubmitFunction={handleSubmit(submeter)}
           inputSize="7vh"
         >
-          <label>
-            Nome Completo: *{" "}
-            {errors.name?.message && <Errors> - {errors.name?.message}</Errors>}
-          </label>
-          <input
-            type="text"
-            placeholder="Digite seu nome completo aqui..."
-            {...register("name")}
-          />
-          <label>
-            Imagem de perfil: *{" "}
-            {errors.img?.message && <Errors> - {errors.img?.message}</Errors>}
-          </label>
-          <input
-            type="text"
-            placeholder="Insira a url da imagem aqui..."
-            {...register("img")}
-          />
-          <label>
-            Abordagem em: *{" "}
-            {errors.emphasis?.message && (
-              <Errors> - {errors.emphasis?.message}</Errors>
-            )}
-          </label>
-          <input
-            type="text"
-            placeholder="Digite sua áreas de atuação aqui..."
-            {...register("emphasis")}
-          />
-          <label>
-            Experiência Clínica: *{" "}
-            {errors.experience?.message && (
-              <Errors> - {errors.experience?.message}</Errors>
-            )}
-          </label>
-          <input
-            type="text"
-            placeholder="Digite a quanto tempo está atuando..."
-            {...register("experience")}
-          />
-          <label>
-            Faixa de horário que atenderá: *{" "}
-            {errors.schedules?.message && (
-              <Errors> - {errors.schedules?.message}</Errors>
-            )}
-          </label>
-          <select {...register("schedules")}>
-            <option value=">08:00 - 12:00">08:00 - 12:00</option>
-            <option value="14:00 - 18:00">14:00 - 18:00</option>
-            <option value="18:00 - 22:00">18:00 - 22:00</option>
-            <option value="08:00 - 12:00 / 14:00 - 18:00">
-              08:00 - 12:00 / 14:00 - 18:00
-            </option>
-            <option value="14:00 - 18:00 / 18:00 - 22:00">
-              14:00 - 18:00 / 18:00 - 22:00
-            </option>
-            <option value="08:00 - 12:00 / 18:00 - 22:00">
-              08:00 - 12:00 / 18:00 - 22:00
-            </option>
-          </select>
-          <label>
-            Dias da semana que atenderá: *{" "}
-            {errors.working_days?.message && (
-              <Errors> - {errors.working_days?.message}</Errors>
-            )}
-          </label>
-          <input
-            type="text"
-            placeholder="Digite no formato Seg/Ter/Qua ..."
-            {...register("working_days")}
-          />
+          <div>
+            <label>
+              Nome Completo: *{" "}
+              {errors.name?.message && (
+                <Errors> - {errors.name?.message}</Errors>
+              )}
+            </label>
+            <input
+              type="text"
+              placeholder="Digite seu nome completo aqui..."
+              {...register("name")}
+            />
+          </div>
+          <div>
+            <label>
+              Imagem de perfil: *{" "}
+              {errors.img?.message && <Errors> - {errors.img?.message}</Errors>}
+            </label>
+            <input
+              type="text"
+              placeholder="Insira a url da imagem aqui..."
+              {...register("img")}
+            />
+          </div>
+          <div>
+            <label>
+              Abordagem em: *{" "}
+              {errors.emphasis?.message && (
+                <Errors> - {errors.emphasis?.message}</Errors>
+              )}
+            </label>
+            <input
+              type="text"
+              placeholder="Digite sua áreas de atuação aqui..."
+              {...register("emphasis")}
+            />
+          </div>
+          <div>
+            <label>
+              Experiência Clínica: *{" "}
+              {errors.experience?.message && (
+                <Errors> - {errors.experience?.message}</Errors>
+              )}
+            </label>
+            <input
+              type="text"
+              placeholder="Digite a quanto tempo está atuando..."
+              {...register("experience")}
+            />
+          </div>
+          <div>
+            <label>
+              Faixa de horário que atenderá: *{" "}
+              {errors.schedules?.message && (
+                <Errors> - {errors.schedules?.message}</Errors>
+              )}
+            </label>
+            <select {...register("schedules")}>
+              <option value=">08:00 - 12:00">08:00 - 12:00</option>
+              <option value="14:00 - 18:00">14:00 - 18:00</option>
+              <option value="18:00 - 22:00">18:00 - 22:00</option>
+              <option value="08:00 - 12:00 / 14:00 - 18:00">
+                08:00 - 12:00 / 14:00 - 18:00
+              </option>
+              <option value="14:00 - 18:00 / 18:00 - 22:00">
+                14:00 - 18:00 / 18:00 - 22:00
+              </option>
+              <option value="08:00 - 12:00 / 18:00 - 22:00">
+                08:00 - 12:00 / 18:00 - 22:00
+              </option>
+            </select>
+          </div>
+          <div>
+            <label>
+              Dias da semana que atenderá: *{" "}
+              {errors.working_days?.message && (
+                <Errors> - {errors.working_days?.message}</Errors>
+              )}
+            </label>
+            <input
+              type="text"
+              placeholder="Digite no formato Seg/Ter/Qua ..."
+              {...register("working_days")}
+            />
+          </div>
           <Button
             type="submit"
             size="100%"

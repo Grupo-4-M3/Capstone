@@ -48,29 +48,33 @@ function Login() {
           onSubmitFunction={handleSubmit(login)}
           inputSize="7vh"
         >
-          <label>
-            Email:{" "}
-            {errors.email?.message && (
-              <Errors> - {errors.email?.message}</Errors>
-            )}
-          </label>
-          <input
-            placeholder="Digite seu email aqui..."
-            name="email"
-            {...register("email")}
-          />
-          <label>
-            Senha:{" "}
-            {errors.password?.message && (
-              <Errors> - {errors.password?.message}</Errors>
-            )}
-          </label>
-          <input
-            type="password"
-            placeholder="Digite sua senha aqui..."
-            name="password"
-            {...register("password")}
-          />
+          <div>
+            <label>
+              Email:{" "}
+              {errors.email?.message && (
+                <Errors> - {errors.email?.message}</Errors>
+              )}
+            </label>
+            <input
+              placeholder="Digite seu email aqui..."
+              name="email"
+              {...register("email")}
+            />
+          </div>
+          <div>
+            <label>
+              Senha:{" "}
+              {errors.password?.message && (
+                <Errors> - {errors.password?.message}</Errors>
+              )}
+            </label>
+            <input
+              type="password"
+              placeholder="Digite sua senha aqui..."
+              name="password"
+              {...register("password")}
+            />
+          </div>
           <Button
             type="submit"
             size="100%"
@@ -82,6 +86,5 @@ function Login() {
     </Container>
   );
 }
-/* mudança */
 
 export default Login;
