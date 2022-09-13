@@ -82,7 +82,12 @@ function DashboardPaciente() {
       <Header type={"dashBoard"} user={paciente} />
       <div className={"container"}>
         <div className="psicologos">
-          <List tituloList={"PSICÓLOGOS"} size={"100%"} sizeY={"200px"}>
+          <List
+            tituloList={"PSICÓLOGOS"}
+            size={"100%"}
+            sizeY={"200px"}
+            maxSizeWidth="1000px"
+          >
             {psicologos.map((psico) => (
               <ItemLista
                 typeCard="pessoa"
@@ -96,7 +101,12 @@ function DashboardPaciente() {
           </List>
         </div>
         <div className="horarios">
-          <List tituloList={"Meus Horários"} size={"100%"} sizeY={"100px"}>
+          <List
+            tituloList={"Meus Horários"}
+            size={"100%"}
+            sizeY={"100px"}
+            maxSizeWidth="600px"
+          >
             {horario.map((hora, index) => (
               <ItemLista
                 dataAgendamento={hora.dia}

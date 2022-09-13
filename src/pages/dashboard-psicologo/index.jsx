@@ -140,7 +140,7 @@ function DashboardPsicologo() {
       <Header type="dashBoard" user={psicologo} />
       <Box>
         <BoxLista>
-          <List tituloList="Pacientes" size="90vw" maxSizeWidth="500px">
+          <List tituloList="Pacientes" size="97%" maxSizeWidth="800px">
             {patients.map((paciente) => (
               <ItemLista
                 key={paciente.userId}
@@ -179,7 +179,11 @@ function DashboardPsicologo() {
                 key={index}
                 typeCard="agendamento"
                 dataAgendamento={agendamento.dia}
-                nome={agendamento.paciente.name}
+                nome={
+                  agendamento.paciente.name.split(" ")[0] +
+                  " " +
+                  agendamento.paciente.name.split(" ")[1]
+                }
                 horario={agendamento.horario}
                 onclick={() => {
                   setEvent(agendamento);

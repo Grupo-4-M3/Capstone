@@ -12,6 +12,7 @@ export const StyledDashboardPaciente = styled.div`
     height: 80vh;
 
     width: 90%;
+
     .psicologos {
       li {
         cursor: pointer;
@@ -37,8 +38,8 @@ export const StyledDashboardPaciente = styled.div`
 
   @media (min-width: 671px) {
     .container {
+      max-width: 1600px;
       margin: auto;
-      max-width: 90%;
       display: flex;
       flex-direction: row;
       justify-content: space-around;

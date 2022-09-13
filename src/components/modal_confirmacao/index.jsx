@@ -89,15 +89,27 @@ function ModalConfirmation({
               description: `Queixas do paciente: ${paciente?.complaint}`,
               location: "Online",
               startDateTime: `${formatDate()}T${
-                evento.horario.split(" - ")[0]
+                parseInt(evento.horario.split(":")[0]) + 3 < 10
+                  ? "0" + (parseInt(evento.horario.split(":")[0]) + 3) + ":00"
+                  : parseInt(evento.horario.split(":")[0]) + 3 + ":00"
               }`,
-              endDateTime: `${formatDate()}T${evento.horario.split(" - ")[1]}`,
+              endDateTime: `${formatDate()}T${
+                parseInt(evento.horario.split(" - ")[1].split(":")[0]) + 3 < 10
+                  ? "0" +
+                    (parseInt(evento.horario.split(" - ")[1].split(":")[0]) +
+                      3) +
+                    ":00"
+                  : parseInt(evento.horario.split(" - ")[1].split(":")[0]) +
+                    3 +
+                    ":00"
+              }`,
               attendees: [
                 { email: paciente.email },
                 { email: psicologo.email },
               ],
             }
           )
+          //evento.horario.split(" - ")[1].split(":")[0]
           .then((res) => {
             toast.success("Evento Agendado com sucesso!");
             updateCalendars(res);
